@@ -1,4 +1,4 @@
-# Nome do projeto
+Plataforma Interativa para Controle e Análise de Consumo de Energia
 
 `CURSO: Análise e Desenvolvimento de Sistemas`
 
@@ -6,20 +6,21 @@
 
 `Xº semestre/ANO`
 
-Escreva um ou dois parágrafos resumindo o objetivo do seu projeto.
+  Este projeto propõe o desenvolvimento de uma plataforma interativa para análise e controle do consumo de energia, voltada tanto para usuários residenciais quanto para empresas. A proposta visa fornecer ferramentas didáticas e interativas que permitam visualizar, interpretar e otimizar o consumo energético de maneira acessível, sem a necessidade de conhecimento técnico avançado.
+
+  A plataforma será desenvolvida utilizando Python (Flask) no backend e HTML, CSS e JavaScript no frontend, garantindo uma experiência fluida e intuitiva.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+Felipe Portela Antunes
+Gabriel Maciel Gonzaga
+Luis Fernando Nunes Martins
+Matheus Felipe Souza Rodrigues  
+Vitor Diniz Godoi dos Santos
 
 ## Professor
 
-* Nome completo do(a) professor(a)
+Jardell Fillipe da Silva
 
 ## Instruções de utilização
 
