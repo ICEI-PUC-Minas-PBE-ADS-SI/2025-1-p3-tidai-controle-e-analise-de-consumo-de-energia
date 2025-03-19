@@ -12,11 +12,11 @@
 
 ## Integrantes
 
-Felipe Portela Antunes
-Gabriel Maciel Gonzaga
-Luis Fernando Nunes Martins
-Matheus Felipe Souza Rodrigues  
-Vitor Diniz Godoi dos Santos
+- Felipe Portela Antunes
+- Gabriel Maciel Gonzaga
+- Luis Fernando Nunes Martins
+- Matheus Felipe Souza Rodrigues  
+- Vitor Diniz Godoi dos Santos
 
 ## Professor
 
