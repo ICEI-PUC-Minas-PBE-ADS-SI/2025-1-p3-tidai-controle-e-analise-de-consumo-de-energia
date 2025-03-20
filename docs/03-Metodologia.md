@@ -58,7 +58,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - _Scrum master_: Vitor
 - Desenvolvedor _front-end_: Luis/Portela
 - Desenvolvedor _back-end_: Matheus/Luis
-- Testes: Vitor 
+- Testes: Vitor, Gabriel
 
 ###  Quadro de tarefas
 
