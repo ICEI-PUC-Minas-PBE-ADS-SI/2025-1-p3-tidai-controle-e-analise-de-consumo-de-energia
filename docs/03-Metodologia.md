@@ -70,10 +70,10 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Matheus        | Contexto | 01/02/2024     | 07/02/2024 | ✔️    | 05/02/2024      |
-| Maciel        | Especificação    | 03/02/2024     | 21/03/2024 | 📝    |                 |
-| Luis        | Metodologia  | 01/01/2024     | 21/03/2024 | ⌛     |                 |
-| Mateus       | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |       |
+| Matheus        | Contexto | 01/02/2024     | 17/03/2024 | ✔️    | 17/03/2024      |
+| Maciel        | Especificação    | 03/02/2024     | 17/03/2024 | 📝    |  20/03/2025               |
+| Luis        | Metodologia  | 01/01/2024     | 17/03/2024 | ⌛     |  20/03/2025                |
+| Mateus       | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |  20/03/2025      |
 
 #### Sprint 2
 
