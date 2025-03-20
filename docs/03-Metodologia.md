@@ -3,11 +3,18 @@
 
 <span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
 
-Descreva aqui a metodologia de trabalho do grupo para abordar o problema. Inclua definições sobre os ambientes de trabalho utilizados pela equipe para desenvolver o projeto. Isso abrange a relação dos ambientes utilizados, a estrutura para a gestão do código-fonte, além da definição do processo e das ferramentas por meio dos quais a equipe se organiza (gestão de equipes).
-
+O desenvolvimento do projeto seguirá uma abordagem ágil, garantindo flexibilidade para adaptação às mudanças de requisitos e otimização do processo de desenvolvimento. A equipe utilizará práticas de Scrum para organização das tarefas, garantindo entregas incrementais e contínuas.
 ## Relação de ambientes de trabalho
 
-Os artefatos do projeto são desenvolvidos a partir de diversas plataformas. A relação dos ambientes com seus respectivos propósitos deverá ser apresentada em uma tabela que especifique e detalhe Ambiente, Plataforma e Link de Acesso. Defina também os ambientes e frameworks que serão utilizados no desenvolvimento de aplicações móveis.
+| Ambiente   | Plataforma | Link de Acesso
+| :----         |    :----         |    :----   |
+| Desenvolvimento        | VS Code + GitHub | 
+| Backend        | Python   | 
+| Frontend        | HTML, CSS, JS |           |
+| Banco de Dados        | PostgreSQL  |    |
+| Gerenciamento         | Trello / Jira  |    |
+
+Além disso, o ambiente de desenvolvimento será configurado localmente antes da implantação em servidores de teste ou produção.
 
 ## Controle de versão
 
@@ -43,16 +50,15 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 > Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
 
 #### Sprint 1
-- _Scrum master_: AlunaX
-- Protótipos: AlunoY
-- Testes: AlunoK
-- Documentação: AlunaZ
+- _Scrum master_: Marciel
+- Protótipos: Felipe
+- Documentação: Matheus/Luis/Vitor
 
 #### Sprint 2
-- _Scrum master_: AlunaY
-- Desenvolvedor _front-end_: AlunoX
-- Desenvolvedor _back-end_: AlunoK
-- Testes: AlunaZ
+- _Scrum master_: Godoi
+- Desenvolvedor _front-end_: Luis/Portela
+- Desenvolvedor _back-end_: Matheus/Luis
+- Testes: Vitor 
 
 ###  Quadro de tarefas
 
