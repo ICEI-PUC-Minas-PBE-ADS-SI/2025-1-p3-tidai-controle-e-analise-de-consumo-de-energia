@@ -11,8 +11,8 @@ O desenvolvimento do projeto seguirá uma abordagem ágil, garantindo flexibilid
 | Desenvolvimento        | VS Code + GitHub | 
 | Backend        | Python   | 
 | Frontend        | HTML, CSS, JS |           |
-| Banco de Dados        | PostgreSQL  |    |
-| Gerenciamento         | Trello / Jira  |    |
+| Banco de Dados        | Temu  |    |
+| Gerenciamento         | Trello   |    |
 
 Além disso, o ambiente de desenvolvimento será configurado localmente antes da implantação em servidores de teste ou produção.
 
@@ -50,15 +50,15 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 > Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
 
 #### Sprint 1
-- _Scrum master_: Maciel
+- Diagrama de Caso de Uso: Maciel/Vitor
 - Protótipos: Felipe
-- Documentação: Matheus/Luis/Vitor
+- Documentação: Matheus/Luis
 
 #### Sprint 2
 - _Scrum master_: Vitor
 - Desenvolvedor _front-end_: Luis/Portela
 - Desenvolvedor _back-end_: Matheus/Luis
-- Testes: Vitor, Gabriel
+- Testes: Vitor 
 
 ###  Quadro de tarefas
 
@@ -70,10 +70,10 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| AlunaX        | Introdução | 01/02/2024     | 07/02/2024 | ✔️    | 05/02/2024      |
-| AlunaZ        | Objetivos    | 03/02/2024     | 10/02/2024 | 📝    |                 |
-| AlunoY        | Histórias de usuário  | 01/01/2024     | 07/01/2005 | ⌛     |                 |
-| AlunoK        | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |       |
+| Matheus        | Contexto | 01/02/2024     | 07/02/2024 | ✔️    | 05/02/2024      |
+| Maciel        | Especificação    | 03/02/2024     | 21/03/2024 | 📝    |                 |
+| Luis        | Metodologia  | 01/01/2024     | 21/03/2024 | ⌛     |                 |
+| Mateus       | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |       |
 
 #### Sprint 2
 
