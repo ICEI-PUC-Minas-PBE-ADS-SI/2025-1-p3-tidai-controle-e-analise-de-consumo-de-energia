@@ -50,9 +50,10 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 > Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
 
 #### Sprint 1
-- Diagrama de Caso de Uso: Maciel/Vitor
+- _Scrum master_: Matheus
+- Diagramas: Maciel/Vitor
 - Protótipos: Felipe
-- Documentação: Matheus/Luis
+- Documentação: Luis
 
 #### Sprint 2
 - _Scrum master_: Vitor
@@ -70,10 +71,10 @@ Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Matheus        | Contexto | 01/02/2024     | 17/03/2024 | ✔️    | 17/03/2024      |
-| Maciel        | Especificação    | 03/02/2024     | 17/03/2024 | 📝    |  20/03/2025               |
-| Luis        | Metodologia  | 01/01/2024     | 17/03/2024 | ⌛     |  20/03/2025                |
-| Mateus       | Personas 1  |    01/01/2024        | 12/02/2005 | ❌    |  20/03/2025      |
+| Matheus        | Contexto | 01/02/2025     | 17/03/2025 | ✔️    | 17/03/2025      |
+| Maciel        | Especificação    | 03/02/2025     | 17/03/2025 | ✔️    |  20/03/2025               |
+| Luis        | Metodologia  | 01/01/2025     | 17/03/2025 | ✔️     |  20/03/2025                |
+
 
 #### Sprint 2
 
@@ -101,7 +102,17 @@ Legenda:
 
 ### Processo
 
-Coloque informações sobre detalhes da implementação do Scrum seguido pelo grupo. O grupo deverá fazer uso do recurso de gerenciamento de projeto oferecido pelo GitHub, que permite acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
+O grupo adotará o framework Scrum para gerenciar o desenvolvimento do projeto. A implementação seguirá as seguintes diretrizes:
+
+Sprints: O projeto será desenvolvido em ciclos de trabalho curtos, com entregas incrementais.
+
+Backlog do Produto: As tarefas serão organizadas em um backlog priorizado, garantindo que as atividades mais importantes sejam executadas primeiro.
+
+Daily Meetings: Reuniões diárias curtas para atualização do andamento das tarefas e identificação de bloqueios.
+
+Review e Retrospectiva: Ao final de cada sprint, será realizada uma revisão para validar entregas e uma retrospectiva para melhorias contínuas.
+
+Quadros do Trello: O grupo estara se organizando atreves do Trello.
  
 > **Links úteis**:
 > - [Planejamento e gestão ágil de projetos](https://pucminas.instructure.com/courses/87878/pages/unidade-2-tema-2-utilizacao-de-ferramentas-para-controle-de-versoes-de-software)
