@@ -110,9 +110,9 @@ O projeto está restrito aos itens apresentados na tabela a seguir.
 ## Diagrama de casos de uso
 
 No sistema, os casos de uso são estruturados para atender tanto às necessidades dos clientes quanto dos administradores, promovendo uma interação eficaz. 
--Para os clientes, os casos de uso envolvem o registro de consumo, o que permite que os usuários insiram os dados de suas contas de energia e acompanhem seu histórico de consumo. 
+- Para os clientes, os casos de uso envolvem o registro de consumo, o que permite que os usuários insiram os dados de suas contas de energia e acompanhem seu histórico de consumo. 
 Apartir desses dados, o sistema gera relatórios detalhados que facilitam o monitoramento do padrão de uso e identificam oportunidades para economia.
--Por outro lado, os administradores possuem casos de uso voltados para a gestão do conteúdo e dos usuários: eles podem gerenciar o cadastro e os dados dos clientes, publicar, editar ou excluir notícias relacionadas à economia de energia e administrar as dicas oferecidas.
+- Por outro lado, os administradores possuem casos de uso voltados para a gestão do conteúdo e dos usuários: eles podem gerenciar o cadastro e os dados dos clientes, publicar, editar ou excluir notícias relacionadas à economia de energia e administrar as dicas oferecidas.
 Essa divisão de responsabilidades torna o sistema robusto, permitindo que cada grupo de usuários interaja de forma adequada com os recursos disponíveis e contribuindo para a promoção de um consumo energético mais consciente e econômico.
 
 ![image](https://github.com/user-attachments/assets/ab9e4b05-a9c4-4c77-80e5-101af05a96c6)
