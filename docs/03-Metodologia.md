@@ -47,8 +47,6 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 ###  Divisão de papéis
 
-> Apresente a divisão de papéis entre os membros do grupo em cada Sprint. O desejável é que, em cada Sprint, o aluno assuma papéis diferentes na equipe. Siga o modelo do exemplo abaixo:
-
 #### Sprint 1
 - _Scrum master_: Matheus
 - Diagramas: Maciel/Vitor
@@ -63,28 +61,26 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 ###  Quadro de tarefas
 
-> Apresente a divisão de tarefas entre os membros do grupo e o acompanhamento da execução, conforme o exemplo abaixo.
-
 #### Sprint 1
 
 Atualizado em: 21/04/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| Matheus        | Contexto | 01/02/2025     | 17/03/2025 | ✔️    | 17/03/2025      |
+| Matheus        | Contexto | 01/02/2025     | 17/03/2025 | ✔️    | 19/03/2025      |
 | Maciel        | Especificação    | 03/02/2025     | 17/03/2025 | ✔️    |  20/03/2025               |
 | Luis        | Metodologia  | 01/01/2025     | 17/03/2025 | ✔️     |  20/03/2025                |
 
 
 #### Sprint 2
 
-Atualizado em: 21/04/2024
+Atualizado em: 21/03/2024
 
 | Responsável   | Tarefa/Requisito | Iniciado em    | Prazo      | Status | Terminado em    |
 | :----         |    :----         |      :----:    | :----:     | :----: | :----:          |
-| AlunaX        | Página inicial   | 01/02/2024     | 07/03/2024 | ✔️    | 05/02/2024      |
-| AlunaZ        | CSS unificado    | 03/02/2024     | 10/03/2024 | 📝    |                 |
-| AlunoY        | Página de login  | 01/02/2024     | 07/03/2024 | ⌛     |                 |
+| Felipe Portela        | Desing do Site   | 19/03/2025     | 28/04/2025 | 📝    |       |
+| Gabriel Maciel        | Tabelas dos Bancos de Dados    | 21/04/2025     | 28/04/2025 | 📝   |                 |
+| Matheus Felipe      | Coleta de Bibliotecas e APIs  | 21/03/2025     | 28/04/2025 | 📝     |                 |
 | AlunoK        | Script de login  |  01/01/2024    | 12/03/2024 | ❌    |       |
 
 
@@ -95,31 +91,20 @@ Legenda:
 - ❌: não iniciado
 
 
-> **Links úteis**:
-> - [11 passos essenciais para implantar Scrum no seu projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
-> - [Os papéis do Scrum e a verdade sobre cargos nessa técnica](https://www.atlassian.com/br/agile/scrum/roles)
-
 ### Processo
 
 O grupo adotará o framework Scrum para gerenciar o desenvolvimento do projeto. A implementação seguirá as seguintes diretrizes:
 
-Sprints: O projeto será desenvolvido em ciclos de trabalho curtos, com entregas incrementais.
+- Sprints: O projeto será desenvolvido em ciclos de trabalho curtos, com entregas incrementais.
 
-Backlog do Produto: As tarefas serão organizadas em um backlog priorizado, garantindo que as atividades mais importantes sejam executadas primeiro.
+- Backlog do Produto: As tarefas serão organizadas em um backlog priorizado, garantindo que as atividades mais importantes sejam executadas primeiro.
 
-Daily Meetings: Reuniões diárias curtas para atualização do andamento das tarefas e identificação de bloqueios.
+- Weekly Meetings: Reuniões Semanais para atualização do andamento das tarefas e identificação de bloqueios.
 
-Review e Retrospectiva: Ao final de cada sprint, será realizada uma revisão para validar entregas e uma retrospectiva para melhorias contínuas.
+- Review e Retrospectiva: Ao final de cada sprint, será realizada uma revisão para validar entregas e uma retrospectiva para melhorias contínuas.
 
-Quadros do Trello: O grupo estara se organizando atreves do Trello.
+- Quadros do Trello: O grupo estara se organizando atreves do Trello.
  
-> **Links úteis**:
-> - [Planejamento e gestão ágil de projetos](https://pucminas.instructure.com/courses/87878/pages/unidade-2-tema-2-utilizacao-de-ferramentas-para-controle-de-versoes-de-software)
-> - [Sobre quadros de projeto](https://docs.github.com/pt/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards)
-> - [Project management, made simple](https://github.com/features/project-management/)
-> - [Como criar backlogs no GitHub](https://www.youtube.com/watch?v=RXEy6CFu9Hk)
-> - [Tutorial slack](https://slack.com/intl/en-br/)
 
 ### Ferramentas
 
