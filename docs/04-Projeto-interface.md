@@ -7,6 +7,16 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados na <a href="02-Especificacao.md"> Especificação do projeto</a></span>.
 
+
+ ##  Interação do Usuário
+
+ O objetivo principal da interação do usuário com a plataforma é proporcionar uma experiência clara e eficiente para o monitoramento e análise do consumo energético de dispositivos domésticos. A interface está sendo projetada com o propósito de facilitar o acesso às informações essenciais de consumo de energia, permitindo que os usuários compreendam seu uso energético de maneira prática e acessível.
+
+ A plataforma permite que o usuário veja informações em tempo real, gere relatórios e receba sugestões para economizar energia. O design foi pensado para tornar a navegação fácil e direta, garantindo que todas as funcionalidades sejam acessíveis sem confundir o usuário com excesso de informações.
+
+ A proposta busca tornar o uso da plataforma agradável e acessível para diferentes tipos de usuários, incluindo aqueles que não têm muita experiência com tecnologia.
+
+ 
  ## User flow
 
 Fluxo de usuário (user flow) é uma técnica que permite ao desenvolvedor mapear todo o fluxo de navegação do usuário na aplicação. Essa técnica serve para alinhar os caminhos e as possíveis ações que o usuário pode realizar junto com os membros da equipe.
