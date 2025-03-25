@@ -53,7 +53,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - Desenvolvedor _back-end_: Matheus/Luis
 - Banco de dados: Maciel
 - Prototipos: Portela
-- Diagramas: Luis 
+- Diagramas: Luis/Maciel 
 
 ###  Quadro de tarefas
 
