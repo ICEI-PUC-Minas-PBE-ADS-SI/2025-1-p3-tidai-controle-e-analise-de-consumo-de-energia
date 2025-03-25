@@ -48,10 +48,12 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 - Documentação: Luis
 
 #### Sprint 2
-- _Scrum master_: Vitor
+- _Scrum master_: Matheus
 - Desenvolvedor _front-end_: Luis/Portela
 - Desenvolvedor _back-end_: Matheus/Luis
-- Testes: Vitor 
+- Banco de dados: Maciel
+- Prototipos: Portela
+- Diagramas: Luis 
 
 ###  Quadro de tarefas
 
