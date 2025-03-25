@@ -14,9 +14,9 @@
 
 Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do usuário, um painel voltado para empresas que necessitam de um monitoramento mais detalhado, e uma área educativa com informações sobre eficiência energética. Além disso, a plataforma contará com notificações e alertas para ajudar os usuários a adotarem práticas mais sustentáveis. O foco dos wireframes é garantir navegação fluida, acessibilidade e eficiência na apresentação das informações.
 
-(images/Frame.png)
 
 
+![Pádina inicial](images/Frame.png)
 
 
  
