@@ -28,9 +28,16 @@ Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do u
 ![Pádina inicial](images/Frame10.png)
 
 
+## Logo
+
+A logo GreenVolt foi inspirada nos adesivos de eficiência energética encontrados em eletrodomésticos, utilizando barras coloridas que representam diferentes níveis de consumo. O gradiente de cores, indo do vermelho ao verde, simboliza a transição do alto consumo para a eficiência energética, reforçando o propósito da plataforma de ajudar usuários a monitorar e otimizar o uso de energia.
+
+O design limpo e moderno transmite sustentabilidade, tecnologia e inovação, enquanto a tipografia combina tons de verde e preto, destacando a ideia de energia renovável e confiabilidade. O uso da letra "G" estilizada na primeira versão reforça a identidade da marca e cria um elemento visual marcante.
 
 
- 
+![Pádina inicial](images/logo.png)
+
+
  ## User flow
 
 Fluxo de usuário (user flow) é uma técnica que permite ao desenvolvedor mapear todo o fluxo de navegação do usuário na aplicação. Essa técnica serve para alinhar os caminhos e as possíveis ações que o usuário pode realizar junto com os membros da equipe.
