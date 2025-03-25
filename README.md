@@ -8,7 +8,7 @@
 
   Este projeto propõe o desenvolvimento de uma plataforma interativa para análise e controle do consumo de energia, voltada tanto para usuários residenciais quanto para empresas. A proposta visa fornecer ferramentas didáticas e interativas que permitam visualizar, interpretar e otimizar o consumo energético de maneira acessível, sem a necessidade de conhecimento técnico avançado.
 
-  A plataforma será desenvolvida utilizando Python (Flask) no backend e HTML, CSS e JavaScript no frontend, garantindo uma experiência fluida e intuitiva.
+  A plataforma será desenvolvida utilizando Python com Flask no backend e HTML, CSS e JavaScript no frontend, garantindo uma experiência fluida e intuitiva.
 
 ## Integrantes
 
