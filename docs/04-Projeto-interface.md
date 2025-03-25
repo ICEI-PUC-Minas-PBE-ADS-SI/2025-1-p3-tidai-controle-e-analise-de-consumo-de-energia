@@ -16,6 +16,12 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
 
  A proposta busca tornar o uso da plataforma agradável e acessível para diferentes tipos de usuários, incluindo aqueles que não têm muita experiência com tecnologia.
 
+ ## Wireframes
+
+ Os wireframes desenvolvidos para a plataforma de controle de consumo de energia foram projetados para oferecer uma experiência intuitiva e acessível. As principais telas incluem a página inicial, que apresenta um resumo do projeto e incentiva o cadastro, e o dashboard do usuário, onde gráficos interativos exibem o consumo energético detalhado. Há também uma ferramenta para análise de contas de energia, permitindo que os usuários insiram dados e recebam relatórios personalizados.
+
+Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do usuário, um painel voltado para empresas que necessitam de um monitoramento mais detalhado, e uma área educativa com informações sobre eficiência energética. Além disso, a plataforma contará com notificações e alertas para ajudar os usuários a adotarem práticas mais sustentáveis. O foco dos wireframes é garantir navegação fluida, acessibilidade e eficiência na apresentação das informações.
+
  
  ## User flow
 
