@@ -1,12 +1,4 @@
 
-# Projeto de interface
-
-<span style="color:red">Pré-requisitos: <a href="02-Especificacao.md"> Especificação do projeto</a></span>
-
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
-
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados na <a href="02-Especificacao.md"> Especificação do projeto</a></span>.
-
 
  ##  Interação do Usuário
 
@@ -21,6 +13,11 @@ Visão geral da interação do usuário pelas telas do sistema e protótipo inte
  Os wireframes desenvolvidos para a plataforma de controle de consumo de energia foram projetados para oferecer uma experiência intuitiva e acessível. As principais telas incluem a página inicial, que apresenta um resumo do projeto e incentiva o cadastro, e o dashboard do usuário, onde gráficos interativos exibem o consumo energético detalhado. Há também uma ferramenta para análise de contas de energia, permitindo que os usuários insiram dados e recebam relatórios personalizados.
 
 Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do usuário, um painel voltado para empresas que necessitam de um monitoramento mais detalhado, e uma área educativa com informações sobre eficiência energética. Além disso, a plataforma contará com notificações e alertas para ajudar os usuários a adotarem práticas mais sustentáveis. O foco dos wireframes é garantir navegação fluida, acessibilidade e eficiência na apresentação das informações.
+
+(images/Frame.png)
+
+
+
 
  
  ## User flow
