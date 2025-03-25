@@ -43,7 +43,7 @@ Discuta como a configuração do projeto foi feita na ferramenta de versionament
 
 #### Sprint 1
 - _Scrum master_: Matheus
-- Diagramas: Maciel/Vitor
+- Diagramas: Maciel
 - Protótipos: Felipe
 - Documentação: Luis
 
