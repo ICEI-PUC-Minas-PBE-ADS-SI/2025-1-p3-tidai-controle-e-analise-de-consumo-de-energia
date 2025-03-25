@@ -17,7 +17,17 @@ Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do u
 
 
 ![Pádina inicial](images/Frame.png)
-![Pádina inicial](images/Frame2.png)![Pádina inicial](images/Frame3.png)
+![Pádina inicial](images/Frame2.png)
+![Pádina inicial](images/Frame3.png)
+![Pádina inicial](images/Frame4.png)
+![Pádina inicial](images/Frame5.png)
+![Pádina inicial](images/Frame6.png)
+![Pádina inicial](images/Frame7.png)
+![Pádina inicial](images/Frame8.png)
+![Pádina inicial](images/Frame9.png)
+![Pádina inicial](images/Frame10.png)
+
+
 
 
  
