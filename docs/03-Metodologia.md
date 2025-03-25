@@ -11,7 +11,7 @@ O desenvolvimento do projeto seguirá uma abordagem ágil, garantindo flexibilid
 | Desenvolvimento        | VS Code + GitHub | 
 | Backend        | Python   | 
 | Frontend        | HTML, CSS, JS |           |
-| Banco de Dados        | Tembo  |    |
+| Banco de Dados        | Tembo  |  https://cloud.tembo.io/  |
 | Gerenciamento         | Trello   |  https://trello.com/b/jXlkngHO/controle-de-energia  |
 
 Além disso, o ambiente de desenvolvimento será configurado localmente antes da implantação em servidores de teste ou produção.
