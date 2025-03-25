@@ -17,6 +17,7 @@ Outras funcionalidades incluem um simulador de consumo baseado nos hábitos do u
 
 
 ![Pádina inicial](images/Frame.png)
+![Pádina inicial](images/Frame2(1).png)
 
 
  
