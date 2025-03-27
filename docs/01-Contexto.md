@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 Plataforma Interativa para Controle e Análise de Consumo de Energia
+=======
+## Introdução
+>>>>>>> Stashed changes
 
 Introdução:
 
