@@ -77,7 +77,7 @@ Atualizado em: 21/03/2024
 | Felipe Portela        | Desing do Site   | 19/03/2025     | 28/04/2025 | 📝    |       |
 | Gabriel Maciel        | Tabelas dos Bancos de Dados    | 21/04/2025     | 28/04/2025 | 📝   |                 |
 | Matheus Felipe      | Coleta de Bibliotecas e APIs  | 21/03/2025     | 28/04/2025 | 📝     |                 |
-| AlunoK        | Script de login  |  01/01/2024    | 12/03/2024 | ❌    |       |
+| Matheus Felipe        | Script de login  |  01/04/2025    | 28/04/2025 | 📝    |       |
 
 
 Legenda:
