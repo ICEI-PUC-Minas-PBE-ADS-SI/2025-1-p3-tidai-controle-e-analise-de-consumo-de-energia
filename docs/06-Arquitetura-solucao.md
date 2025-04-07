@@ -1,10 +1,30 @@
 # Arquitetura da solução
 
-<span style="color:red">Pré-requisitos: <a href="04-Projeto-interface.md"> Projeto de interface</a></span>
+O sistema GreenVolt foi projetado para monitorar o consumo de energia elétrica dos usuários, oferecendo uma experiência personalizada, com dicas de economia, controle de dispositivos e registro de contas de luz.
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
+Como o sistema funciona:
+Cadastro e acesso de usuários:
+Cada usuário cria uma conta informando nome, e-mail e senha. Com isso, tem acesso ao sistema e pode cadastrar seus dispositivos.
 
-![Arquitetura da Solução](images/arquitetura.png)
+Cadastro de dispositivos:
+O usuário informa quais aparelhos elétricos possui, junto com a potência (em watts) e a média diária de uso. O sistema usa essas informações para estimar o consumo de energia de cada dispositivo.
+
+Monitoramento do consumo:
+Com base nos dados fornecidos, o sistema calcula o consumo diário (em kWh) e armazena esse histórico. Assim, o usuário pode visualizar como cada aparelho impacta na conta de energia.
+
+Controle da conta de luz:
+Mensalmente, o usuário pode registrar o valor da fatura, o total consumido e a data de vencimento. Isso ajuda a comparar o consumo estimado com o consumo real.
+
+Favoritos de notícias:
+O sistema fornece dicas e notícias sobre economia de energia. Caso o usuário ache interessante, pode salvar essas notícias em uma lista de favoritas para consultar depois.
+
+Relacionamento entre os dados:
+
+Cada usuário pode cadastrar vários dispositivos, contas de luz e notícias favoritas.
+
+Cada dispositivo tem um histórico de consumo próprio.
+
+Todos os dados são vinculados diretamente ao usuário, garantindo segurança e personalização.
 
 ## Diagrama de classes
 
