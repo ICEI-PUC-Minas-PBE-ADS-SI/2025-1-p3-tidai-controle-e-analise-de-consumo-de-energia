@@ -28,11 +28,8 @@ Todos os dados são vinculados diretamente ao usuário, garantindo segurança e 
 
 ## Diagrama de classes
 
-O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
+![Diagrama de classes](https://github.com/user-attachments/assets/7f3e6838-0e09-481f-9875-748f17ac59a6)
 
-> **Links úteis**:
-> - [Diagramas de classes - documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.7.0?topic=diagrams-class)
-> - [O que é um diagrama de classe UML?](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
 
 ##  Modelo de dados
 
