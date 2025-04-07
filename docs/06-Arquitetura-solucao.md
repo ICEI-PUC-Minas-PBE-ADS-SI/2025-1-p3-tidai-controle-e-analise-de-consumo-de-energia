@@ -20,9 +20,9 @@ O sistema fornece dicas e notícias sobre economia de energia. Caso o usuário a
 
 Relacionamento entre os dados:
 
-Cada usuário pode cadastrar vários dispositivos, contas de luz e notícias favoritas.
+-Cada usuário pode cadastrar vários dispositivos, contas de luz e notícias favoritas.
 
-Cada dispositivo tem um histórico de consumo próprio.
+-Cada dispositivo tem um histórico de consumo próprio.
 
 Todos os dados são vinculados diretamente ao usuário, garantindo segurança e personalização.
 
