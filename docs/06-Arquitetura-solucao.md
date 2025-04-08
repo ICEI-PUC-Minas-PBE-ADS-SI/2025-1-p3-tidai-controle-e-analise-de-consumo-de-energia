@@ -28,8 +28,6 @@ Todos os dados são vinculados diretamente ao usuário, garantindo segurança e 
 
 ## Diagrama de classes
 
-![Diagrama de classes](https://github.com/user-attachments/assets/7f3e6838-0e09-481f-9875-748f17ac59a6)
-
 
 ##  Modelo de dados
 
@@ -48,10 +46,8 @@ O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, obje
 
 ### Esquema relacional
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
+![Esquema relacional](https://github.com/user-attachments/assets/7f3e6838-0e09-481f-9875-748f17ac59a6)
 
-![Exemplo de um modelo relacional](images/modelo_relacional.png "Exemplo de modelo relacional.")
 ---
 
 > **Links úteis**:
