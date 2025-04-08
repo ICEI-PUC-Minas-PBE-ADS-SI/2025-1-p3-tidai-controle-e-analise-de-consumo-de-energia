@@ -60,43 +60,54 @@ Insira aqui o script de criação das tabelas do banco de dados.
 Veja um exemplo:
 
 ```sql
--- Criação da tabela Medico
-CREATE TABLE Medico (
-    MedCodigo INTEGER PRIMARY KEY,
-    MedNome VARCHAR(100)
+-- Tabela de usuários do sistema
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL
 );
 
--- Criação da tabela Paciente
-CREATE TABLE Paciente (
-    PacCodigo INTEGER PRIMARY KEY,
-    PacNome VARCHAR(100)
+-- Tabela de dispositivos registrados pelos usuários
+CREATE TABLE dispositivos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    potencia_watts FLOAT NOT NULL,
+    horas_uso_diario FLOAT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Consulta
-CREATE TABLE Consulta (
-    ConCodigo INTEGER PRIMARY KEY,
-    MedCodigo INTEGER,
-    PacCodigo INTEGER,
-    Data DATE,
-    FOREIGN KEY (MedCodigo) REFERENCES Medico(MedCodigo),
-    FOREIGN KEY (PacCodigo) REFERENCES Paciente(PacCodigo)
+-- Tabela de registros de consumo dos dispositivos
+CREATE TABLE consumo (
+    id SERIAL PRIMARY KEY,
+    dispositivo_id INT NOT NULL,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    consumo_kwh FLOAT NOT NULL,
+    FOREIGN KEY (dispositivo_id) REFERENCES dispositivos(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Medicamento
-CREATE TABLE Medicamento (
-    MdcCodigo INTEGER PRIMARY KEY,
-    MdcNome VARCHAR(100)
+-- Tabela de notícias salvas como favoritas pelos usuários
+CREATE TABLE noticias_favoritas (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    data_salva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Prescricao
-CREATE TABLE Prescricao (
-    ConCodigo INTEGER,
-    MdcCodigo INTEGER,
-    Posologia VARCHAR(200),
-    PRIMARY KEY (ConCodigo, MdcCodigo),
-    FOREIGN KEY (ConCodigo) REFERENCES Consulta(ConCodigo),
-    FOREIGN KEY (MdcCodigo) REFERENCES Medicamento(MdcCodigo)
+-- Tabela de contas de luz cadastradas pelos usuários
+CREATE TABLE conta_de_luz (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    mes_referencia VARCHAR(7) NOT NULL,  -- Exemplo: "03/2025"
+    valor_total DECIMAL(10,2) NOT NULL,
+    consumo_total_kwh FLOAT NOT NULL,
+    data_vencimento DATE NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
 
