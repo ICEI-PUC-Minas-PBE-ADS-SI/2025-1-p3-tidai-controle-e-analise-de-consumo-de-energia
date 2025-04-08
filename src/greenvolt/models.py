@@ -36,7 +36,6 @@ class Conta(db.Model):
     data_ref = db.Column(db.String(length=7), nullable=False, unique=True)
     valor = db.Column(db.Numeric(10,2), nullable=False)
     consumo_kwh = db.Column(db.Integer, nullable=False)
-    ## Nao vou colocar data de vencimento
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
 
 class Noticia(db.Model):

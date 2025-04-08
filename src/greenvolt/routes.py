@@ -10,7 +10,11 @@ def page_bem_vindo():
 
 @app.route('/login')
 def page_login():
-    return render_template("login.html") ## discutir com o grupo se o login e cadastro vai ficar na mesma pagina ou vai ser diferente
+    return render_template("login.html")
+
+@app.route('/registrar')
+def page_registrar():
+    return render_template("registrar.html")
 
 
 @app.route('/home')
