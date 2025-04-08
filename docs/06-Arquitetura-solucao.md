@@ -28,6 +28,8 @@ Todos os dados são vinculados diretamente ao usuário, garantindo segurança e 
 
 ## Diagrama de classes
 
+![Diagrama de Classes](https://github.com/user-attachments/assets/34b925d0-5dec-4f57-ba98-b77390188110)
+
 
 ##  Modelo de dados
 
