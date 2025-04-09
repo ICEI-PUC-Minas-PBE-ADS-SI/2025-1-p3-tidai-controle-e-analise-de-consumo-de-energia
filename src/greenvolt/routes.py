@@ -1,6 +1,7 @@
-from greenvolt import app
-from flask import render_template
+from greenvolt import app, db
+from flask import render_template, redirect, url_for, flash, request
 from greenvolt.forms import CadastroForm, LoginForm
+from greenvolt.models import Usuario, Dispositivo, Conta, Noticia
 
 
 @app.route('/')
@@ -8,13 +9,29 @@ def page_bem_vindo():
     return render_template("bem-vindo.html")
 
 
-@app.route('/login')
+@app.route('/cadastro', methods=['GET', 'POST'])
+def page_cadastro():
+    form = CadastroForm()
+    if form.validate_on_submit:
+        usuario = Usuario(
+            nome = form.usuario.data,  ## Quero padroninzar para entrar somente com o Email, trocar nome de Usuario para nome completo  
+            email = form.email.data,
+            senhacrip = form.senha1
+        )
+
+        db.session.add(usuario)
+        db.session.commit()
+        return redirect(url_for('home.html'))
+    if form.errors != {}:
+        for err in form.errors.values():
+            flash(f"Erro ao cadastrar usuário {err}") # definir category=danger
+
+    return render_template("cadastro.html", form=form)
+
+
+@app.route('/login', methods=['GET', 'POST'])
 def page_login():
     return render_template("login.html")
-
-@app.route('/registrar')
-def page_registrar():
-    return render_template("registrar.html")
 
 
 @app.route('/home')

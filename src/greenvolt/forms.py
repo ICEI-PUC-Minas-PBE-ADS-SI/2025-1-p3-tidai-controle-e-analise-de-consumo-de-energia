@@ -6,8 +6,6 @@ import re
 
 
 class CadastroForm(FlaskForm):
-    ## implentar código de verificação se o usuario existe no db
-    ## implentar código de verificação se o email é existente no db
 
     def validate_usuario(self, check_user):
         user =  Usuario.query.filter_by(usuario=check_user.data).first()
@@ -39,5 +37,5 @@ class CadastroForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     email = StringField(label="Email:", validators=[DataRequired()])
-    senha = PasswordField(label="Senah:", validators=[DataRequired()])
+    senha = PasswordField(label="Senha:", validators=[DataRequired()])
     submit = SubmitField(label="Login")
