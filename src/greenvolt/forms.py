@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from wtforms import StringField, SubmitField, PasswordField, DateField, DecimalField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 from greenvolt.models import Usuario
 import re
@@ -8,7 +8,7 @@ import re
 class CadastroForm(FlaskForm):
 
     def validate_usuario(self, check_user):
-        user =  Usuario.query.filter_by(usuario=check_user.data).first()
+        user =  Usuario.query.filter_by(nome=check_user.data).first()
         if user:
             raise ValidationError("Usuário ja existe ! Cadastre outro nome de usuário")
 
@@ -28,7 +28,7 @@ class CadastroForm(FlaskForm):
         ##    raise ValidationError("Usuário ja existe ! Cadastre outro nome de usuário")
         
 
-    usuario = StringField(label="Nome de Usuário", validators=[DataRequired(), Length(min=6, max=30)] ) ## definir com o grupo quaisvão ser os parametros minimos para criação do usuario
+    nome = StringField(label="Nome de Usuário", validators=[DataRequired(), Length(min=6, max=30)] ) ## definir com o grupo quaisvão ser os parametros minimos para criação do usuario
     email = StringField(label="Email", validators=[DataRequired() ,Email()])
     senha1 = PasswordField(label="Senha", validators=[DataRequired()]) ## definir com o grupo os parametros para a senha
     senha1 = PasswordField(label="Confirmação de Senha", validators=[DataRequired(), EqualTo(senha1)])
@@ -39,3 +39,8 @@ class LoginForm(FlaskForm):
     email = StringField(label="Email:", validators=[DataRequired()])
     senha = PasswordField(label="Senha:", validators=[DataRequired()])
     submit = SubmitField(label="Login")
+
+class AdicionarContaForm(FlaskForm):
+     data = DateField(label="Data da Conta:",format="%m/%Y", validators=[DataRequired()])
+     valor = DecimalField(label="Valor da Conta:", validators=[DataRequired()])
+     submit = SubmitField(label="Adicionar Conta")

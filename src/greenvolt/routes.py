@@ -14,7 +14,7 @@ def page_cadastro():
     form = CadastroForm()
     if form.validate_on_submit:
         usuario = Usuario(
-            nome = form.usuario.data,  ## Quero padroninzar para entrar somente com o Email, trocar nome de Usuario para nome completo  
+            nome = form.nome.data,  ## Quero padroninzar para entrar somente com o Email, trocar nome de Usuario para nome completo  
             email = form.email.data,
             senhacrip = form.senha1
         )
