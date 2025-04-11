@@ -6,4 +6,23 @@
 
 {% block conteudo %}
 <p>Pagina de login</p>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.email.label() }}
+    {{ form.email(class="form-control", placeholder="Email")}}
+
+    {{ form.senha.label() }}
+    {{ form.senha(class="form-control", placeholder="Senha")}}
+
+    <div class="checkbox mb-3">
+        <h5>Voce ainda não possui cadastro?</h5>
+        <a href="{{url_for('page_cadastro')}}">Cadastre-se</a>
+    </div>
+    <br>
+    <div>
+        {{ form.submit()}}
+    </div>
+
+</form>
 {% endblock %}

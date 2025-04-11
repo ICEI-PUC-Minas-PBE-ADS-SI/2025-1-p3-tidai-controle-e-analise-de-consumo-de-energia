@@ -1,6 +1,10 @@
-from greenvolt import db
+from greenvolt import db, login_manager
 from greenvolt import bcrypt
 from flask_login import UserMixin
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Usuario.query.get(int(user_id))
 
 class Usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -14,7 +18,7 @@ class Usuario(db.Model, UserMixin):
 
     @property
     def senhacrip(self):
-        return self.senhacrip
+        return self.senha
     
     @senhacrip.setter
     def senhacrip(self, senha_texto):

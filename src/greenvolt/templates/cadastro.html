@@ -6,4 +6,34 @@
 
 {% block conteudo %}
 <p>Pagina de Cadastro</p>
+
+<form method="POST">
+
+    {{ form.hidden_tag() }}
+
+    {{ form.nome.label() }}
+    {{ form.nome(class="form-control", placeholder="Digite o Nome Completo")}}
+
+    {{ form.email.label() }}
+    {{ form.email(class="form-control", placeholder="Digite seu email")}}
+
+    {{ form.senha1.label() }}
+    {{ form.senha1(class="form-control", placeholder="Crie uma senha")}}
+
+    {{ form.senha2.label() }}
+    {{ form.senha2(class="form-control", placeholder="Confirme sua senha")}}
+
+<div>
+    <h5>Voce ainda ja possui cadastro?</h5>
+    <a href="{{url_for('page_login')}}">Login</a>
+</div>
+
+<br>
+
+<div>
+    {{ form.submit() }}
+</div>
+
+</form>
+
 {% endblock %}
