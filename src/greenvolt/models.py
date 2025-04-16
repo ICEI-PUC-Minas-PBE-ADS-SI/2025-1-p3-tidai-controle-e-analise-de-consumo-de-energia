@@ -42,6 +42,24 @@ class Conta(db.Model):
     consumo_kwh = db.Column(db.Integer, nullable=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
 
+    def requisitos_para_adicionar(self,usuario):
+        conta_existente = Conta.query.filter_by(usuario_id=usuario.id, data_ref=self.data_ref).first()
+        return not conta_existente and self.valor > 0
+
+    def adicionar_conta(self, usuario):
+        self.usuario_id = usuario.id
+        db.session.add(self)
+        db.session.commit()
+
+    def remover_conta(usuario, data_ref):
+        conta = Conta.query.filter_by(usuario_id=usuario.id, data_ref=data_ref).first()
+        if conta:
+            db.session.delete(conta)
+            db.session.commit()
+            return True
+        return False
+
+
 class Noticia(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(length=255), nullable=False, unique=True)

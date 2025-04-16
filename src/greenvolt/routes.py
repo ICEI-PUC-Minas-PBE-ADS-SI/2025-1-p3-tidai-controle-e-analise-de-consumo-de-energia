@@ -1,6 +1,6 @@
 from greenvolt import app, db
 from flask import render_template, redirect, url_for, flash, request
-from greenvolt.forms import CadastroForm, LoginForm
+from greenvolt.forms import CadastroForm, LoginForm, AdicionarContaForm, RemoverContaForm
 from greenvolt.models import Usuario, Dispositivo, Conta, Noticia
 from flask_login import login_user, logout_user, login_required, current_user, LoginManager
 
@@ -44,10 +44,38 @@ def page_login():
     return render_template("login.html", form=form)
 
 
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 @login_required
 def page_home():
-    return render_template("home.html")
+    adicionar_form = AdicionarContaForm()
+    remover_form = RemoverContaForm()
+
+    contas = Conta.query.filter_by(usuario_id=current_user.id).order_by(Conta.data_ref.asc()).all()
+    
+    meses = [conta.data_ref for conta in contas]
+    valores = [float(conta.valor) for conta in contas]
+
+    ## Adicionar Conta
+
+    if adicionar_form.validate_on_submit():
+        conta=Conta(
+            valor = adicionar_form.valor.data,
+            data = adicionar_form.data.data
+        )
+        if conta.requisitos_para_adicionar(usuario=current_user):
+            conta.adicionar_conta(current_user)
+            flash("Conta adicionada com sucesso!", category="sucess")
+        else:
+            flash("Já existe uma conta para esse mês ou o valor é invalido", category="danger")
+
+    ## Remover Conta
+
+    if remover_form.data and remover_form.validate_on_submit():
+        data_ref = remover_form.data_ref.data
+        if Conta.remover_conta(current_user, data_ref):
+            flash("Conta removida com sucesso", category="sucess")
+    
+    return render_template("home.html", adicionar_form=adicionar_form, remover_form=remover_form)
 
 @app.route('/simulador-de-gastos')
 def page_simulador_de_gastos():

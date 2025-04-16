@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, DateField, DecimalField
+from wtforms import StringField, SubmitField, PasswordField, DateField, DecimalField, HiddenField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 from greenvolt.models import Usuario
 import re
@@ -39,3 +39,7 @@ class AdicionarContaForm(FlaskForm):
      data = DateField(label="Data da Conta:",format="%m/%Y", validators=[DataRequired()])
      valor = DecimalField(label="Valor da Conta:", validators=[DataRequired()])
      submit = SubmitField(label="Adicionar Conta")
+
+class RemoverContaForm(FlaskForm):
+    data_ref = HiddenField(validators=[DataRequired()])
+    submit = SubmitField(label="Remover conta")
