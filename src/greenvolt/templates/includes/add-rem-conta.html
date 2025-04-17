@@ -1,0 +1,28 @@
+<div class="modal fade" id="modalAdicionarConta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="POST">
+          {{ adicionar_form.hidden_tag() }}
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Adicionar Nova Conta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              {{ adicionar_form.data.label(class="form-label") }}
+              {{ adicionar_form.data(class="form-control") }}
+            </div>
+            <div class="mb-3">
+              {{ adicionar_form.valor.label(class="form-label") }}
+              {{ adicionar_form.valor(class="form-control") }}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

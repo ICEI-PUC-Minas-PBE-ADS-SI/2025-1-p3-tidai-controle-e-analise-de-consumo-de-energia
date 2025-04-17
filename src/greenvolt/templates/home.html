@@ -6,4 +6,7 @@
 
 {% block conteudo %}
     Home page
+    {% includes 'includes/add-rev-conta.html' %}
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarConta">Adicionar Conta</button>
+
 {% endblock %}
