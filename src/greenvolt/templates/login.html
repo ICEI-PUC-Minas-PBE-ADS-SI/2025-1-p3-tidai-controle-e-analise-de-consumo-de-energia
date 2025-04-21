@@ -1,28 +1,76 @@
-{% extends 'base.html' %}
-
-{% block titulo %}
-    Login
-{% endblock %}
-
-{% block conteudo %}
-<p>Pagina de login</p>
-<form method="POST">
-    {{ form.hidden_tag() }}
-
-    {{ form.email.label() }}
-    {{ form.email(class="form-control", placeholder="Email")}}
-
-    {{ form.senha.label() }}
-    {{ form.senha(class="form-control", placeholder="Senha")}}
-
-    <div class="checkbox mb-3">
-        <h5>Voce ainda não possui cadastro?</h5>
-        <a href="{{url_for('page_cadastro')}}">Cadastre-se</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Economize Energia</title>
+  
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/40x40?text=IG" alt="Logo">
     </div>
-    <br>
-    <div>
-        {{ form.submit()}}
+    <nav>
+      <a href="#">HOME</a>
+      <a href="#">SOBRE</a>
+      <a href="#">FUNCIONALIDADES</a>
+    </nav>
+    
+    <div style="background: grey; width: 40px; height: 40px; border-radius: 50%;"></div>
+  </header>
+
+  <div class="container">
+    <div class="left">
+      <h1>Crie sua conta e comece a <span>economizar</span> energia!</h1>
+      <ul>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+          </svg>
+          Acompanhe seu consumo em tempo real
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+          </svg>
+          Descubra formas inteligentes de reduzir seus gastos
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+          </svg>
+          Receba relatórios detalhados e personalizados
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+          </svg>
+          Otimize o uso de energia na sua casa ou empresa
+        </li>
+      </ul>
+      
     </div>
 
-</form>
-{% endblock %}
+    <div class="right">
+      <h2>Criar conta</h2>
+      <div class="social-icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+      </div>
+      <div class="form">
+        <input type="text" placeholder="Nome">
+        <input type="email" placeholder="E-mail">
+        <input type="tel" placeholder="Telefone">
+        <input type="tel" placeholder="Telefone">
+        <button>CADASTRO</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
