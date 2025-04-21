@@ -1,0 +1,303 @@
+/* RESET E ESTILOS GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+/* LAYOUT DIVIDIDO */
+.split-layout {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    margin-top: 80px;
+}
+
+.left-side {
+    flex: 2;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 2rem 10%;
+}
+
+.right-side {
+    flex: 1;
+    background: url('/src/greenvolt/static/img/Lado\ direito\ Home.png');
+    background-size: cover;
+    background-position: center;
+    min-width: 30%;
+}
+
+.content {
+    max-width: 100%;
+    color: #333;
+}
+
+.content h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+}
+
+.content p {
+    margin-bottom: 2rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.cta-button {
+    background-color: #00a33c;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #008530;
+}
+
+/* HEADER E NAVBAR */
+header {
+    background-color: #0a5c0d;
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    background-color: white;
+    padding: 5px 10px;
+    z-index: 10;
+    flex-shrink: 0;
+    order: 1;
+}
+  
+.logo img {
+    width: 180px;
+    height: auto;
+    max-height: 90px;
+    display: block;
+}
+
+.navbar {
+    display: flex;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+    order: 2;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-width: calc(100% - 250px);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+    flex-shrink: 0;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    position: relative;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.btn-login {
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border: 1px solid white;
+}
+
+.btn-register {
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background-color: #00a33c;
+    border: 1px solid #00a33c;
+}
+
+.btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-register:hover {
+    background-color: #008530;
+    border-color: #008530;
+}
+
+/* MENU HAMBURGUER */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.8rem;
+    padding: 5px;
+    z-index: 1001;
+    margin-left: auto;
+    order: 3;
+}
+
+/* MEDIA QUERIES */
+
+/* Telas médias (1100px) */
+@media (max-width: 1100px) {
+    .navbar a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .auth-buttons {
+        gap: 10px;
+    }
+    
+    .btn-login, .btn-register {
+        padding: 6px 12px;
+    }
+}
+
+/* Tablet (900px) */
+@media (max-width: 900px) {
+    .nav-links {
+        max-width: calc(100% - 200px);
+    }
+    
+    .navbar a {
+        margin: 0 0.4rem;
+        font-size: 0.85rem;
+    }
+    
+    .logo img {
+        width: 150px;
+    }
+}
+
+/* Tablet Pequeno (768px) */
+@media (max-width: 768px) {
+    .split-layout {
+        flex-direction: column-reverse;
+        height: auto;
+    }
+    
+    .left-side {
+        order: 2;
+        padding: 3rem 5%;
+    }
+    
+    .right-side {
+        order: 1;
+        height: 300px;
+        min-width: 100%;
+    }
+    
+    /* Navbar Mobile */
+    .menu-icon {
+        display: block;
+    }
+    
+    .navbar {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #0a5c0d;
+        flex-direction: column;
+        padding: 1rem 0;
+        clip-path: circle(0px at 90% -10%);
+        -webkit-clip-path: circle(0px at 90% -10%);
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+        max-height: 0;
+        overflow: hidden;
+    }
+    
+    .navbar.active {
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+        max-height: 500px;
+    }
+    
+    .nav-links, .auth-buttons {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+    
+    .navbar a {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 0;
+        margin: 0;
+        font-size: 1rem;
+    }
+    
+    .auth-buttons {
+        margin: 1rem 0 0;
+        gap: 10px;
+        width: 80%;
+    }
+    
+    .btn-login, .btn-register {
+        width: 100%;
+        padding: 0.8rem 0;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Pequeno (480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.8rem 3%;
+    }
+    
+    .logo img {
+        width: 120px;
+    }
+    
+    .right-side {
+        height: 250px;
+    }
+    
+    .left-side {
+        padding: 2rem 5%;
+    }
+    
+    .content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+    }
+}

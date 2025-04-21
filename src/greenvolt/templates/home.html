@@ -1,12 +1,50 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GréenVolt - Economize Energia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/greenvolt/static/css/home.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/src/greenvolt/static/img/Logo1.png" alt="GreenVolt Logo">
+        </div>
+        
+        <nav class="navbar">
+            <a href="#" class="active">HOME</a>
+            <a href="#">SOBRE</a>
+            <a href="#">FUNCIONALIDADES</a>
+            <a href="#">CONTATO</a>
+            <div class="auth-buttons">
+                <a href="#" class="btn-login">LOGIN</a>
+                <a href="#" class="btn-register">CADASTRO</a>
+            </div>
+        </nav>
 
-{% block titulo %}
-    Home
-{% endblock %}
+        <div class="menu-icon" id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
 
-{% block conteudo %}
-    Home page
-    {% includes 'includes/add-rev-conta.html' %}
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarConta">Adicionar Conta</button>
+    <main class="split-layout">
+        <div class="left-side">
+            <div class="content">
+                <h1>Otimize seu Consumo de Energia</h1>
+                <p>Os altos custos de energia elétrica podem ser um desafio, mas crescente e gerenciado até consumo para o dia há fácil trocar. Atualmente, que não pode ser auxiliar. Interessar a colocar seus gastos energéticos, seja em casa ou na sua empresa.</p>
+                <div class="author">
+                    <p><strong>XHIM CENIO</strong></p>
+                </div>
+                <button class="cta-button">SAIBA MAIS</button>
+            </div>
+        </div>
+        <div class="right-side"></div>
+    </main>
 
-{% endblock %}
+
+    <script src="/src/greenvolt/static/js/home.js"></script>
+</body>
+</html>
