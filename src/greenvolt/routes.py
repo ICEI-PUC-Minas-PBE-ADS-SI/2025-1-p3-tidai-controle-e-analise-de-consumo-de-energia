@@ -45,8 +45,7 @@ def page_login():
 
 
 @app.route('/logout')
-@login_required
-def logout():
+def page_logout():
     logout_user()
     flash("Você saiu com sucesso!", category="success")
     return redirect(url_for('page_login'))

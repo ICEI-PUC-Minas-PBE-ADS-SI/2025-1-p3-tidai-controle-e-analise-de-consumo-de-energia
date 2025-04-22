@@ -26,16 +26,46 @@
             <a href="#">SOBRE</a>
             <a href="#">FUNCIONALIDADES</a>
             <a href="#">CONTATO</a>
+
+            {% if current_user.is_authenticated %}
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link"> Bem Vindo, {{ current_user.nome }}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('page_logout')}}">Sair</a>
+                </li>
+              </ul>
+
+              {% else %}
             <div class="auth-buttons">
                 <a href="{{url_for('page_login')}}" class="btn-login">LOGIN</a>
                 <a href="{{url_for('page_cadastro')}}" class="btn-register">CADASTRO</a>
             </div>
+            {% endif %}
         </nav>
 
         <div class="menu-icon" id="menu-icon">
             <i class="fas fa-bars"></i>
         </div>
     </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="class"
+                        >
+                    </button>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
     {% block conteudo %}
 
