@@ -1,126 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@400&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
-  font-family: 'Red Rose', sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
   background: #f4f4f4;
-  line-height: 1.6;
 }
 
 header {
   background-color: #0a5c0d;
   color: white;
-  padding: 15px 5%;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
-.logo img {
-  width: 70px;
-}
-
-.navbar {
+header .logo {
   display: flex;
-  transition: all 0.3s ease;
+  align-items: center;
+  gap: 10px;
 }
 
-.navbar a {
+header nav a {
   margin: 0 15px;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  white-space: nowrap;
-}
-
-.navbar svg {
-  display: inline-block;
-  transition: opacity 0.3s ease;
-}
-
-.navbar.active svg {
-  opacity: 0;
-}
-
-.menu-icon {
-  display: none;
-  cursor: pointer;
-  color: white;
-  font-size: 1.5rem;
-  margin-left: auto;
 }
 
 .container {
   display: flex;
-  flex-wrap: wrap;
-  min-height: calc(100vh - 80px);
+  height: calc(100vh - 80px);
 }
 
-/* ----- LADO ESQUERDO ----- */
-.left {
+.left, .right {
   flex: 1;
-  min-width: 300px;
-  background: url('../img/5398.png');
+  padding: 40px;
+}
+
+.left {
+  background: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 40px 5%;
+  justify-content: center;
 }
 
-.headline h1 {
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.3;
-  margin: 20px 0;
+.left h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-.headline h1 span {
+.left h1 span {
   color: #00a33c;
 }
 
-.benefits {
-  margin-top: 40px;
-}
-
-.benefits ul {
+.left ul {
   list-style: none;
+  padding: 0;
+  margin-top: 30px;
 }
 
-.benefits li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  margin-bottom: 20px;
-}
+.left li {
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .left li svg {
+    fill: green;
+    flex-shrink: 0;
+  }
+  
 
-.benefits li svg {
-  fill: green;
-  flex-shrink: 0;
-}
 
-/* ----- LADO DIREITO ----- */
+
 .right {
-  flex: 1;
-  min-width: 300px;
   background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 5%;
 }
 
 .right h2 {
   color: #00a33c;
   margin-bottom: 20px;
-  font-size: 1.8rem;
 }
 
 .social-icons {
@@ -138,17 +103,16 @@ header {
 .form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  width: 300px;
 }
 
 .form input {
   margin: 10px 0;
   padding: 12px;
   border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
-  color: #333;
+  border: none;
+  background: #b0b0b0;
+  color: white;
 }
 
 .form button {
@@ -160,66 +124,4 @@ header {
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
-  transition: background 0.3s;
-}
-
-.form button:hover {
-  background-color: #0a4a0d;
-}
-
-/* Media Queries */
-@media (max-width: 992px) {
-  .headline h1 {
-    font-size: 2.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-icon {
-    display: block;
-  }
-
-  .navbar {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #0a5c0d;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    clip-path: circle(0px at 90% -10%);
-    -webkit-clip-path: circle(0px at 90% -10%);
-    transition: all 0.5s ease-out;
-    pointer-events: none;
-  }
-
-  .navbar.active {
-    clip-path: circle(1000px at 90% -10%);
-    -webkit-clip-path: circle(1000px at 90% -10%);
-    pointer-events: all;
-  }
-
-  .navbar a {
-    margin: 10px 0;
-    padding: 10px;
-  }
-
-  .benefits {
-    margin-top: 20px;
-  }
-}
-
-@media (max-width: 576px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .left, .right {
-    padding: 30px 5%;
-  }
-
-  .headline h1 {
-    font-size: 1.8rem;
-  }
 }
