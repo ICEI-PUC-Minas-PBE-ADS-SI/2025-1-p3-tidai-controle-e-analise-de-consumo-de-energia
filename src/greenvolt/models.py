@@ -37,7 +37,7 @@ class Dispositivo(db.Model):
 
 class Conta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data_ref = db.Column(db.String(length=7), nullable=False, unique=True)
+    data_ref = db.Column(db.Date, nullable=False, unique=True)
     valor = db.Column(db.Numeric(10,2), nullable=False)
     consumo_kwh = db.Column(db.Integer, nullable=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)

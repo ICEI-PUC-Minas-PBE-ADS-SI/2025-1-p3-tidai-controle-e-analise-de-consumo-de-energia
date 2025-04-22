@@ -3,7 +3,8 @@ from flask import render_template, redirect, url_for, flash, request
 from greenvolt.forms import CadastroForm, LoginForm, AdicionarContaForm, RemoverContaForm
 from greenvolt.models import Usuario, Dispositivo, Conta, Noticia
 from flask_login import login_user, logout_user, login_required, current_user, LoginManager
-
+from datetime import datetime
+from decimal import Decimal, InvalidOperation
 
 @app.route('/')
 def page_bem_vindo():
@@ -59,31 +60,40 @@ def page_home():
     remover_form = RemoverContaForm()
 
     contas = Conta.query.filter_by(usuario_id=current_user.id).order_by(Conta.data_ref.asc()).all()
-    
-    meses = [conta.data_ref for conta in contas]
-    valores = [float(conta.valor) for conta in contas]
 
-    ## Adicionar Conta
-
+    # Verifica se o form de adicionar foi enviado e é válido
     if adicionar_form.validate_on_submit():
-        conta=Conta(
-            valor = adicionar_form.valor.data,
-            data = adicionar_form.data.data
-        )
-        if conta.requisitos_para_adicionar(usuario=current_user):
-            conta.adicionar_conta(current_user)
-            flash("Conta adicionada com sucesso!", category="sucess")
-        else:
-            flash("Já existe uma conta para esse mês ou o valor é invalido", category="danger")
+        try:
+            nova_conta = Conta(
+                data_ref=adicionar_form.data.data,
+                valor=adicionar_form.valor.data,
+                consumo_kwh=adicionar_form.consumo_kwh.data,
+                usuario_id=current_user.id
+            )
+            db.session.add(nova_conta)
+            db.session.commit()
+            flash("Conta adicionada com sucesso!", category="success")
+            return redirect(url_for('page_home'))  # Evita reenvio ao atualizar
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Ocorreu um erro ao adicionar a conta: {str(e)}", category="danger")
 
-    ## Remover Conta
-
-    if remover_form.data and remover_form.validate_on_submit():
+    # Verifica se o form de remover foi enviado e é válido
+    if remover_form.validate_on_submit():
         data_ref = remover_form.data_ref.data
-        if Conta.remover_conta(current_user, data_ref):
+        conta = Conta.query.filter_by(usuario_id=current_user.id, data_ref=data_ref).first()
+        if conta:
+            db.session.delete(conta)
+            db.session.commit()
             flash("Conta removida com sucesso", category="success")
-    
-    return render_template("home.html", adicionar_form=adicionar_form, remover_form=remover_form)
+            return redirect(url_for('page_home'))
+
+    return render_template(
+        "home.html",
+        adicionar_form=adicionar_form,
+        remover_form=remover_form,
+        contas=contas
+    )
 
 @app.route('/simulador-de-gastos')
 def page_simulador_de_gastos():

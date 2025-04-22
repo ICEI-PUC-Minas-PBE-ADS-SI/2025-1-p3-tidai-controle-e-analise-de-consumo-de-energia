@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalAdicionarConta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form method="POST">
+        <form method="POST" action="{{ url_for('page_home') }}">
           {{ adicionar_form.hidden_tag() }}
           <div class="modal-header">
             <h5 class="modal-title" id="modalLabel">Adicionar Nova Conta</h5>
@@ -10,12 +10,16 @@
           <div class="modal-body">
             <div class="mb-3">
               {{ adicionar_form.data.label(class="form-label") }}
-              {{ adicionar_form.data(class="form-control") }}
+              {{ adicionar_form.data(class="form-control", type="month") }}
             </div>
             <div class="mb-3">
               {{ adicionar_form.valor.label(class="form-label") }}
               {{ adicionar_form.valor(class="form-control") }}
             </div>
+            <div class="mb-3">
+              {{ adicionar_form.consumo_kwh.label(class="form-label") }}
+              {{ adicionar_form.consumo_kwh(class="form-control") }}
+            </div>          
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Adicionar</button>
@@ -25,4 +29,36 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function formatarValor(input) {
+      let value = input.value.replace(/[^\d]/g, ''); 
+
+      if (value.length > 2) {
+        value = value.replace(/(\d{2})$/, ',$1');
+      }
+  
+      if (valor.length > 5) {
+        value = value.replace(/(\d)(\d{3})$/, '$1,$2'); 
+      } 
+
+      value = value.replace(',', '.');
+
+      value = 'R$ ' + value;
+      input.value = value;
+    }
+
+    function formatKWh(input) {
+
+    let value = input.value.replace(/[^\d]/g, '');
+
+    if (value) {
+      input.value = ' kWh ' + value ;
+    } 
+    else {
+      input.value = '';
+    }
+  }
+  </script>
+
   
