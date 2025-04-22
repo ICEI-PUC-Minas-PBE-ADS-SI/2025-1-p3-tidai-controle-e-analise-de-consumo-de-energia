@@ -30,7 +30,7 @@ body {
 
 .right-side {
     flex: 1;
-    background: url('/src/greenvolt/static/img/Lado\ direito\ Home.png');
+    background: url('../img/5398.png');
     background-size: cover;
     background-position: center;
     min-width: 30%;

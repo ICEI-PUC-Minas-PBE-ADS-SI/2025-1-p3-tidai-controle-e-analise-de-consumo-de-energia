@@ -25,7 +25,7 @@ def page_cadastro():
         return redirect(url_for('page_home'))
     if form.errors != {}:
         for err in form.errors.values():
-            flash(f"Erro ao cadastrar usuário {err}") # definir category=danger
+            flash(f"Erro ao cadastrar usuário {err}", category="danger") # definir category=danger
 
     return render_template("cadastro.html", form=form)
 
@@ -37,11 +37,20 @@ def page_login():
         email_usuario_logado = Usuario.query.filter_by(email=form.email.data).first()
         if email_usuario_logado.email and email_usuario_logado.converte_senha(senha_texto_claro=form.senha.data):
             login_user(email_usuario_logado)
-            flash(f"Bem-Vindo!") #definir category=sucess
+            flash(f"Bem-Vindo!", category="success") #definir category=sucess
             return redirect(url_for('page_home'))
         else:
-            print(f'Usuário ou senha incorretos! Tente novamente.') # definir category=danger
+            flash(f'Usuário ou senha incorretos! Tente novamente.', category="danger") 
     return render_template("login.html", form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("Você saiu com sucesso!", category="success")
+    return redirect(url_for('page_login'))
+
 
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -73,7 +82,7 @@ def page_home():
     if remover_form.data and remover_form.validate_on_submit():
         data_ref = remover_form.data_ref.data
         if Conta.remover_conta(current_user, data_ref):
-            flash("Conta removida com sucesso", category="sucess")
+            flash("Conta removida com sucesso", category="success")
     
     return render_template("home.html", adicionar_form=adicionar_form, remover_form=remover_form)
 
