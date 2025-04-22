@@ -10,7 +10,7 @@ class Usuario(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(length=100), nullable=False, unique=False)
     email = db.Column(db.String(length=100), nullable=False, unique=True)
-    senha = db.Column(db.String(length=255), nullable=False, unique=True)
+    senha = db.Column(db.String(length=255), nullable=False, unique=False)
 
     dispositivos = db.relationship('Dispositivo', backref='usuario', lazy=True)
     contas = db.relationship('Conta', backref='usuario', lazy=True)

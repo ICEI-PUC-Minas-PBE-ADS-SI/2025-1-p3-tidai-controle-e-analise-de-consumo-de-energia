@@ -73,10 +73,12 @@
     
         {{ form.senha2.label() }}
         {{ form.senha2(class="form-control", placeholder="Confirme sua senha")}}
-      </form>
+      
       <div>
+      </form>
         {{ form.submit() }}
       </div>
+    
       <div>
         <h5>Voce ainda ja possui cadastro?</h5>
         <a href="{{url_for('page_login')}}">Login</a>
