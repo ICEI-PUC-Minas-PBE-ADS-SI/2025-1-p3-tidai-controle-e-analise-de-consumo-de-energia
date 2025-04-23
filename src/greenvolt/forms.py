@@ -25,7 +25,7 @@ class CadastroForm(FlaskForm):
 
     nome = StringField(label="Nome de Usuário", validators=[DataRequired(), Length(min=6, max=30)] ) ## definir com o grupo quaisvão ser os parametros minimos para criação do usuario
     email = StringField(label="Email", validators=[DataRequired() ,Email()])
-    senha1 = PasswordField(label="Senha", validators=[DataRequired()]) ## definir com o grupo os parametros para a senha
+    senha1 = PasswordField(label="Senha", validators=[DataRequired(), Length(6)]) ## definir com o grupo os parametros para a senha
     senha2 = PasswordField(label="Confirmação de Senha", validators=[DataRequired(), EqualTo('senha1')])
     submit = SubmitField(label="Cadastrar")
 
