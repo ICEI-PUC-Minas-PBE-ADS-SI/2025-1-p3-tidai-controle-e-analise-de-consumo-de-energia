@@ -8,8 +8,17 @@
 {% block conteudo %}
 
 {% include 'includes/add-rem-conta.html' %}
+<body>
+    
+
 <td>
     <button data-bs-toggle="modal" data-bs-target="#modalAdicionarConta" class="btn btn-outline btn-success">Adicionar Conta</button>
 </td>
+<div id="grafico"></div>
 
+<script>
+    var graphs = {{ graphJSON | safe }};
+    Plotly.newPlot('grafico', graphs.data, graphs.layout);
+</script>
+</body>
 {% endblock %}

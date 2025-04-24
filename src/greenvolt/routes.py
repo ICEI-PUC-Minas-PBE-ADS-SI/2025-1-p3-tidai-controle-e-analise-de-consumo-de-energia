@@ -5,6 +5,10 @@ from greenvolt.models import Usuario, Dispositivo, Conta, Noticia
 from flask_login import login_user, logout_user, login_required, current_user, LoginManager
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
+import plotly.graph_objs as go
+import plotly.io as pio 
+import plotly
+import json
 
 @app.route('/')
 def page_bem_vindo():
@@ -59,7 +63,20 @@ def page_home():
     adicionar_form = AdicionarContaForm()
     remover_form = RemoverContaForm()
 
-    contas = Conta.query.filter_by(usuario_id=current_user.id).order_by(Conta.data_ref.asc()).all()
+    contas = Conta.query.all()
+
+    meses = [conta.data_ref for conta in contas]
+    valores = [conta.valor for conta in contas]
+
+    fig = go.Figure()
+    fig.add_trace(go.Bar(x=meses, y=valores, name='Gráfico de Gasto'))
+
+    fig.update_layout(title='Consumo Mensal de Energia',
+                      xaxis_title='Mês',
+                      yaxis_title='Valor (R$)',
+                      template='simple_white')
+    
+    graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Verifica se o form de adicionar foi enviado e é válido
     if adicionar_form.validate_on_submit():
@@ -92,7 +109,8 @@ def page_home():
         "home.html",
         adicionar_form=adicionar_form,
         remover_form=remover_form,
-        contas=contas
+        contas=contas,
+        graphJSON=graph_json
     )
 
 @app.route('/simulador-de-gastos')
