@@ -7,12 +7,17 @@
 
 {% block conteudo %}
 
-{% include 'includes/add-rem-conta.html' %}
+{% include 'includes/add-conta.html' %}
+{% include 'includes/remove-conta.html' %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <body>
     
 
 <td>
     <button data-bs-toggle="modal" data-bs-target="#modalAdicionarConta" class="btn btn-outline btn-success">Adicionar Conta</button>
+</td>
+<td>
+    <button data-bs-toggle="modal" data-bs-target="#modalRemoverConta" class="btn btn-outline btn-danger">Remover Conta</button>
 </td>
 <div id="grafico"></div>
 

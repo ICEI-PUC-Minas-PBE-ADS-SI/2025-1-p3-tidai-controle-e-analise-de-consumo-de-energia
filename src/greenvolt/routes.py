@@ -12,6 +12,8 @@ import json
 
 @app.route('/')
 def page_bem_vindo():
+    if current_user.is_authenticated:
+        return redirect(url_for('page_home'))
     return render_template("bem-vindo.html")
 
 
@@ -69,12 +71,14 @@ def page_home():
     valores = [conta.valor for conta in contas]
 
     fig = go.Figure()
-    fig.add_trace(go.Bar(x=meses, y=valores, name='Gráfico de Gasto'))
+    fig.add_trace(go.Bar(x=meses, y=valores, name='Gráfico de Gasto',marker=dict(color='green')))
 
     fig.update_layout(title='Consumo Mensal de Energia',
                       xaxis_title='Mês',
                       yaxis_title='Valor (R$)',
-                      template='simple_white')
+                      template='simple_white',
+                      bargap=0.9,
+                      )
     
     graph_json = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
