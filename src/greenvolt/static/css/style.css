@@ -6,6 +6,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: relative; /* Para o ícone do menu ficar posicionado corretamente */
 }
 
@@ -52,3 +53,10 @@ header nav a {
     display: block;
   }
 }
+
+
+  /* Estilo do botao de login e cadastro */
+
+ .btn-login:hover{
+    text-decoration:underline;
+  }

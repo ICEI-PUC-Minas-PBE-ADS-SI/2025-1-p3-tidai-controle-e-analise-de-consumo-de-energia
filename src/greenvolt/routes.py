@@ -49,7 +49,7 @@ def page_login():
 def page_logout():
     logout_user()
     flash("Você saiu com sucesso!", category="success")
-    return redirect(url_for('page_login'))
+    return redirect(url_for('page_bem_vindo'))
 
 
 
