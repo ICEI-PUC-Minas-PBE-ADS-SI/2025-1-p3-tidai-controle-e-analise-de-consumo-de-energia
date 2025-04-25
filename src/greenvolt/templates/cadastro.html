@@ -5,85 +5,279 @@
 {% endblock %}
 
 {% block conteudo %}
+<style>
+  /* Font Import */
+  @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@400..700&display=swap');
+  
+  /* Base Styles */
+  .cadastro-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 0;
+  }
+  
+  .cadastro-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    background: white;
+  }
 
-  <div class="container">
-    <div class="left">
-      <div class="headline">
-        <h1>Crie sua conta e comece a <span>economizar</span> energia!</h1>
-      </div>
-      <div class="benefits">
-        <ul>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-              class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path
-                d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
-            </svg>
-            Acompanhe seu consumo em tempo real
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-              class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path
-                d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
-            </svg>
-            Descubra formas inteligentes de reduzir seus gastos
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-              class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path
-                d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
-            </svg>
-            Receba relatórios detalhados e personalizados
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-              class="bi bi-check-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path
-                d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
-            </svg>
-            Otimize o uso de energia na sua casa ou empresa
-          </li>
-        </ul>
-      </div>
+  /* Left Section - Benefits */
+  .benefits-section {
+    flex: 1.5;
+    padding: 5%;
+    background: url('/static/img/5398.png') center/cover no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .benefits-title {
+    font-family: 'Red Rose', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 3vw, 4rem);
+    line-height: 1.2;
+    margin-bottom: 5%;
+    color: black;
+  }
+  
+  .benefits-title span {
+    color: #03941b;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+  }
+  
+  .benefits-list li {
+    font-family: 'Red Rose', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.2rem, 1.5vw, 2rem);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: black;
+  }
+
+  /* Right Section - Form */
+  .form-section {
+    flex: 1;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .form-title {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    margin-bottom: 5%;
+    color: #2c3e50;
+    text-align: center;
+  }
+  
+  .social-login {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 5%;
+  }
+  
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form-group {
+    margin-bottom: 4%;
+  }
+  
+  .form-label {
+    font-size: 0.9rem;
+    color: #34495e;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 3%;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 3%;
+    background-color: #03941b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 5%;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #027a16;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 5%;
+  }
+  
+  .login-link p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .login-link a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .cadastro-wrapper {
+      flex-direction: column;
+    }
+    
+    .benefits-section, .form-section {
+      padding: 10% 5%;
+    }
+    
+    .benefits-title {
+      font-size: 2rem;
+      text-align: center;
+    }
+    
+    .benefits-list li {
+      font-size: 1.2rem;
+    }
+    
+    .social-login {
+      margin: 8% 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .benefits-title {
+      font-size: 1.8rem;
+    }
+    
+    .benefits-list li {
+      font-size: 1rem;
+    }
+    
+    .form-title {
+      font-size: 1.5rem;
+    }
+    
+    .form-control {
+      padding: 4%;
+    }
+    
+    .submit-btn {
+      padding: 4%;
+    }
+  }
+</style>
+
+<div class="cadastro-container">
+  <div class="cadastro-wrapper">
+    <!-- Left Section - Benefits -->
+    <div class="benefits-section">
+      <h1 class="benefits-title">Crie sua conta e comece a <span>economizar</span> energia!</h1>
+      
+      <ul class="benefits-list">
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#03941b" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+          Acompanhe seu consumo em tempo real
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#03941b" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+          Descubra formas inteligentes de reduzir seus gastos
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#03941b" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+          Receba relatórios detalhados e personalizados
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#03941b" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>
+          Otimize o uso de energia na sua casa ou empresa
+        </li>
+      </ul>
     </div>
 
-    <div class="right">
-      <h2>Criar conta</h2>
-      <div class="social-icons">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google" width="32">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="32">
+    <!-- Right Section - Form -->
+    <div class="form-section">
+      <h2 class="form-title">Criar conta</h2>
+      
+      <div class="social-login">
+        <div class="social-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/36px-Google_%22G%22_logo.svg.png" alt="Google" width="24">
+        </div>
+        <div class="social-icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" width="24">
+        </div>
       </div>
-      <form class="form" method="POST">
+
+      <form method="POST">
         {{ form.hidden_tag() }}
 
-        {{ form.nome.label() }}
-        {{ form.nome(class="form-control", placeholder="Digite o Nome de usuário")}}
-    
-        {{ form.email.label() }}
-        {{ form.email(class="form-control", placeholder="Digite seu email")}}
-    
-        {{ form.senha1.label() }}
-        {{ form.senha1(class="form-control", placeholder="Crie uma senha")}}
-    
-        {{ form.senha2.label() }}
-        {{ form.senha2(class="form-control", placeholder="Confirme sua senha")}}
-      
-      <div>
+        <div class="form-group">
+          {{ form.nome.label(class="form-label") }}
+          {{ form.nome(class="form-control", placeholder="Digite seu nome completo")}}
+        </div>
+
+        <div class="form-group">
+          {{ form.email.label(class="form-label") }}
+          {{ form.email(class="form-control", placeholder="Digite seu email")}}
+        </div>
+
+        <div class="form-group">
+          {{ form.senha1.label(class="form-label") }}
+          {{ form.senha1(class="form-control", placeholder="Crie uma senha")}}
+        </div>
+
+        <div class="form-group">
+          {{ form.senha2.label(class="form-label") }}
+          {{ form.senha2(class="form-control", placeholder="Confirme sua senha")}}
+        </div>
+
+        {{ form.submit(class="submit-btn") }}
       </form>
-        {{ form.submit() }}
+
+      <div class="login-link">
+        <p>Já possui uma conta? <a href="{{url_for('page_login')}}">Faça login</a></p>
       </div>
-    
-      <div>
-        <h5>Voce ainda ja possui cadastro?</h5>
-        <a href="{{url_for('page_login')}}">Login</a>
-    </div>
     </div>
   </div>
-
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

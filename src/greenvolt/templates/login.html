@@ -1,28 +1,143 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
+<style>
+  .login-container {
+    font-family: 'Red Rose', sans-serif;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .login-title {
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .login-subtitle {
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-label {
+    color: #34495e;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .form-control {
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s;
+    width: 100%;
+  }
+  
+  .form-control:focus {
+    border-color: #03941b;
+    outline: none;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #03941b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #027a16;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .register-text {
+    color: #7f8c8d;
+    font-size: 14px;
+  }
+  
+  .register-link {
+    color: #03941b;
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style>
 
-<body>
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h2 class="login-title">Faça Login</h2>
+            <p class="login-subtitle">Acesse sua conta para gerenciar seu consumo</p>
+        </div>
 
-<form method="POST">
-    {{ form.hidden_tag() }}
+        <form method="POST" class="login-form">
+            {{ form.hidden_tag() }}
 
-    {{ form.email.label() }}
-    {{ form.email(class="form-control", placeholder="Email")}}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="seu@email.com") }}
+            </div>
 
-    {{ form.senha.label() }}
-    {{ form.senha(class="form-control", placeholder="Senha")}}
+            <div class="form-group">
+                {{ form.senha.label(class="form-label") }}
+                {{ form.senha(class="form-control", placeholder="Sua senha") }}
+            </div>
 
-    <div class="checkbox mb-3">
-        <h5>Voce ainda não possui cadastro?</h5>
-        <a href="{{url_for('page_cadastro')}}">Cadastre-se</a>
+            {{ form.submit(class="submit-btn") }}
+
+            <div class="register-link">
+                <p class="register-text">
+                    Ainda não tem conta? 
+                    <a href="{{url_for('page_cadastro')}}" class="register-link">
+                        Cadastre-se
+                    </a>
+                </p>
+            </div>
+        </form>
     </div>
-    <br>
-    <div>
-        {{ form.submit()}}
-    </div>
-
-</form>
-</body>
-
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;500;600&display=swap" rel="stylesheet">
 {% endblock %}
