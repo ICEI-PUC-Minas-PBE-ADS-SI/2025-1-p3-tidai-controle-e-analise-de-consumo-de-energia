@@ -168,6 +168,7 @@
         <button class="filter-button" data-filter="economia">Economia</button>
         <button class="filter-button" data-filter="solar">Energia Solar</button>
         <button class="filter-button" data-filter="tarifas">Tarifas</button>
+        
     </div>
 
     <div id="news-grid" class="news-grid">
@@ -279,6 +280,7 @@ const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}
             'solar': 'Energia Solar',
             'tarifas': 'Tarifas',
             'economia': 'Economia',
+            'energia': 'Energia',
             'outros': 'Energia'
         };
         return labels[category] || 'Energia';

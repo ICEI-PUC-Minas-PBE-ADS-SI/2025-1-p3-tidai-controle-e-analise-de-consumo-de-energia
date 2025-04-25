@@ -1,9 +1,354 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Simulador
+    Simulador de Gastos
 {% endblock %}
 
 {% block conteudo %}
-<p>Pagina de simulador de gastos</p>
+<style>
+    .simulador-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .simulador-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    
+    .simulador-titulo {
+        color: #2c3e50;
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .simulador-subtitulo {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+    }
+    
+    .simulador-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .formulario-aparelho {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .cartao-resultados {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .grupo-formulario {
+        margin-bottom: 1.5rem;
+    }
+    
+    .rotulo-formulario {
+        display: block;
+        color: #34495e;
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    
+    .campo-formulario {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+    
+    .btn-calcular {
+        background-color: #03941b;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+    
+    .btn-calcular:hover {
+        background-color: #027a16;
+    }
+    
+    .lista-aparelhos {
+        margin-top: 2rem;
+    }
+    
+    .item-aparelho {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .valor-resultado {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #03941b;
+        margin: 1rem 0;
+    }
+    
+    .rotulo-resultado {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+    }
+    
+    #grafico-consumo {
+        width: 100%;
+        height: 300px;
+        margin-top: 2rem;
+    }
+    
+    .dica-economia {
+        background-color: #f0f7f1;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        color: #03941b;
+    }
+    
+    @media (max-width: 768px) {
+        .simulador-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="simulador-container">
+    <div class="simulador-header">
+        <h1 class="simulador-titulo">Simulador de Gastos de Energia</h1>
+        <p class="simulador-subtitulo">Calcule o consumo dos seus aparelhos elétricos e descubra como economizar</p>
+    </div>
+    
+    <div class="simulador-grid">
+        <div class="formulario-aparelho">
+            <h2>Adicionar Aparelho</h2>
+            <div class="grupo-formulario">
+                <label class="rotulo-formulario">Aparelho Elétrico</label>
+                <select id="seletor-aparelho" class="campo-formulario">
+                    <option value="">Selecione um aparelho</option>
+                    <option value="arcondicionado">Ar-condicionado</option>
+                    <option value="geladeira">Geladeira</option>
+                    <option value="tv">Televisão</option>
+                    <option value="chuveiro">Chuveiro Elétrico</option>
+                    <option value="maquinalavar">Máquina de Lavar</option>
+                    <option value="computador">Computador</option>
+                    <option value="iluminacao">Iluminação</option>
+                    <option value="personalizado">Personalizado</option>
+                </select>
+            </div>
+            
+            <div id="campos-personalizados" style="display: none;">
+                <div class="grupo-formulario">
+                    <label class="rotulo-formulario">Nome do Aparelho</label>
+                    <input type="text" id="nome-personalizado" class="campo-formulario" placeholder="Ex: Ventilador">
+                </div>
+                <div class="grupo-formulario">
+                    <label class="rotulo-formulario">Potência (Watts)</label>
+                    <input type="number" id="watts-personalizado" class="campo-formulario" placeholder="Ex: 100">
+                </div>
+            </div>
+            
+            <div class="grupo-formulario">
+                <label class="rotulo-formulario">Horas de uso por dia</label>
+                <input type="number" id="horas-uso" class="campo-formulario" value="2" min="0" step="0.5">
+            </div>
+            
+            <div class="grupo-formulario">
+                <label class="rotulo-formulario">Dias de uso por mês</label>
+                <input type="number" id="dias-uso" class="campo-formulario" value="30" min="1" max="31">
+            </div>
+            
+            <div class="grupo-formulario">
+                <label class="rotulo-formulario">Tarifa de energia (R$/kWh)</label>
+                <input type="number" id="tarifa-energia" class="campo-formulario" value="0.75" min="0" step="0.01">
+                <small style="color: #7f8c8d;">Verifique na sua conta de luz</small>
+            </div>
+            
+            <button id="adicionar-aparelho" class="btn-calcular">Adicionar Aparelho</button>
+            
+            <div class="lista-aparelhos" id="lista-aparelhos">
+                
+            </div>
+        </div>
+        
+        <div class="cartao-resultados">
+            <h2>Resultado da Simulação</h2>
+            <div class="rotulo-resultado">Consumo Mensal Total</div>
+            <div class="valor-resultado" id="consumo-total">0 kWh</div>
+            
+            <div class="rotulo-resultado">Custo Mensal Estimado</div>
+            <div class="valor-resultado" id="custo-total">R$ 0,00</div>
+            
+            <div id="grafico-consumo"></div>
+            
+            <div class="dica-economia" id="dica-economia">
+                💡 Dica: Reduzir 1 hora diária do uso do ar-condicionado pode economizar até R$ 30 por mês!
+            </div>
+            
+            <div class="grupo-formulario" style="margin-top: 2rem;">
+                <label class="rotulo-formulario">Meta de redução (%)</label>
+                <input type="number" id="meta-reducao" class="campo-formulario" value="15" min="0" max="100">
+            </div>
+            
+            <div class="rotulo-resultado">Economia Potencial</div>
+            <div class="valor-resultado" id="economia-potencial">R$ 0,00</div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const aparelhos = {
+        arcondicionado: { nome: "Ar-condicionado", watts: 1500 },
+        geladeira: { nome: "Geladeira", watts: 150 },
+        tv: { nome: "Televisão", watts: 120 },
+        chuveiro: { nome: "Chuveiro Elétrico", watts: 5500 },
+        maquinalavar: { nome: "Máquina de Lavar", watts: 500 },
+        computador: { nome: "Computador", watts: 300 },
+        iluminacao: { nome: "Iluminação", watts: 60 }
+    };
+    
+    const listaAparelhos = [];
+    let grafico = null;
+    
+    // Elementos do DOM
+    const seletorAparelho = document.getElementById('seletor-aparelho');
+    const camposPersonalizados = document.getElementById('campos-personalizados');
+    const listaAparelhosContainer = document.getElementById('lista-aparelhos');
+    const consumoTotalElemento = document.getElementById('consumo-total');
+    const custoTotalElemento = document.getElementById('custo-total');
+    const economiaPotencialElemento = document.getElementById('economia-potencial');
+    const dicaEconomiaElemento = document.getElementById('dica-economia');
+    const adicionarButton = document.getElementById('adicionar-aparelho');
+    
+    // Mostrar/ocultar campos personalizados
+    seletorAparelho.addEventListener('change', function() {
+        camposPersonalizados.style.display = this.value === 'personalizado' ? 'block' : 'none';
+    });
+    
+    // Adicionar aparelho à lista
+    adicionarButton.addEventListener('click', function() {
+        const aparelhoSelecionado = seletorAparelho.value;
+        
+        if (!aparelhoSelecionado) {
+            alert('Por favor, selecione um aparelho');
+            return;
+        }
+        
+        let nome, watts;
+        
+        if (aparelhoSelecionado === 'personalizado') {
+            nome = document.getElementById('nome-personalizado').value;
+            watts = parseFloat(document.getElementById('watts-personalizado').value);
+            
+            if (!nome || !watts) {
+                alert('Por favor, preencha todos os campos para aparelho personalizado');
+                return;
+            }
+        } else {
+            nome = aparelhos[aparelhoSelecionado].nome;
+            watts = aparelhos[aparelhoSelecionado].watts;
+        }
+        
+        const horas = parseFloat(document.getElementById('horas-uso').value);
+        const dias = parseInt(document.getElementById('dias-uso').value);
+        const tarifa = parseFloat(document.getElementById('tarifa-energia').value);
+        
+        if (isNaN(horas) || isNaN(dias) || isNaN(tarifa)) {
+            alert('Por favor, preencha corretamente todos os campos');
+            return;
+        }
+        
+        const consumo = watts * horas * dias / 1000; // kWh
+        const custo = consumo * tarifa; // R$
+        
+        // Adicionar aparelho à lista
+        listaAparelhos.push({ nome, watts, horas, dias, consumo, custo });
+        
+        // Atualizar lista de aparelhos
+        listaAparelhosContainer.innerHTML = '';
+        listaAparelhos.forEach((aparelho, index) => {
+            const item = document.createElement('div');
+            item.classList.add('item-aparelho');
+            item.innerHTML = `
+                <div><strong>${aparelho.nome}</strong></div>
+                <div>${aparelho.consumo.toFixed(2)} kWh</div>
+                <div>R$ ${aparelho.custo.toFixed(2)}</div>
+                <button onclick="removerAparelho(${index})">Remover</button>
+            `;
+            listaAparelhosContainer.appendChild(item);
+        });
+        
+        // Atualizar resultados totais
+        const consumoTotal = listaAparelhos.reduce((total, aparelho) => total + aparelho.consumo, 0);
+        const custoTotal = listaAparelhos.reduce((total, aparelho) => total + aparelho.custo, 0);
+        
+        consumoTotalElemento.textContent = `${consumoTotal.toFixed(2)} kWh`;
+        custoTotalElemento.textContent = `R$ ${custoTotal.toFixed(2)}`;
+        
+        // Atualizar gráfico
+        atualizarGrafico();
+        
+        // Atualizar economia potencial
+        const metaReducao = parseInt(document.getElementById('meta-reducao').value);
+        const economiaPotencial = (custoTotal * (metaReducao / 100)).toFixed(2);
+        economiaPotencialElemento.textContent = `R$ ${economiaPotencial}`;
+        
+        // Dica de economia
+        dicaEconomiaElemento.textContent = `💡 Dica: Reduzir 1 hora diária do uso do ar-condicionado pode economizar até R$ 30 por mês!`;
+    });
+    
+    // Remover aparelho da lista
+    window.removerAparelho = function(index) {
+        listaAparelhos.splice(index, 1);
+        adicionarButton.click(); // Recalcular os totais
+    };
+    
+    // Atualizar gráfico
+    function atualizarGrafico() {
+        if (grafico) {
+            grafico.remove();
+        }
+        
+        const dadosGrafico = listaAparelhos.map(aparelho => ({
+            x: [aparelho.nome],
+            y: [aparelho.consumo],
+            type: 'bar',
+            name: aparelho.nome
+        }));
+        
+        const layout = {
+            title: 'Consumo de Energia por Aparelho',
+            xaxis: {
+                title: 'Aparelho'
+            },
+            yaxis: {
+                title: 'Consumo (kWh)',
+                rangemode: 'tozero'
+            }
+        };
+        
+        grafico = Plotly.newPlot('grafico-consumo', dadosGrafico, layout);
+    }
+});
+</script>
 {% endblock %}
