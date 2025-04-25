@@ -124,9 +124,9 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 | **Dimensão**   | **Tecnologia**  |
 | ---            | ---             |
 | Front-end      | HTML + CSS + JS + Bootstrap |
-| Back-end       | Node.js         |
-| SGBD           | Temu           |
-| Deploy         | Vercel          |
+| Back-end       | Python          |
+| SGBD           | Postgres           |
+| Deploy         | Render          |
 
 
 ## Hospedagem
