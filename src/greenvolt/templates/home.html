@@ -4,27 +4,113 @@
     Home
 {% endblock %}
 
-
 {% block conteudo %}
+<style>
+  .dashboard-container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .btn-custom {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .btn-add {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-add:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+  }
+  
+  .btn-remove {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-remove:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+  }
+  
+  .graph-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+  }
+  
+  .graph-title {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="dashboard-container">
+  <div class="button-container">
+    <button data-bs-toggle="modal" data-bs-target="#modalAdicionarConta" 
+            class="btn-custom btn-add">
+      Adicionar Conta
+    </button>
+    <button data-bs-toggle="modal" data-bs-target="#modalRemoverConta" 
+            class="btn-custom btn-remove">
+      Remover Conta
+    </button>
+  </div>
+
+  <div class="graph-container">
+    <h3 class="graph-title">Seu Consumo de Energia</h3>
+    <div id="grafico"></div>
+  </div>
+</div>
 
 {% include 'includes/add-conta.html' %}
 {% include 'includes/remove-conta.html' %}
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<body>
-    
-
-<td>
-    <button data-bs-toggle="modal" data-bs-target="#modalAdicionarConta" class="btn btn-outline btn-success">Adicionar Conta</button>
-</td>
-<td>
-    <button data-bs-toggle="modal" data-bs-target="#modalRemoverConta" class="btn btn-outline btn-danger">Remover Conta</button>
-</td>
-<div id="grafico"></div>
-
 <script>
+  // Configuração mínima do gráfico para garantir funcionamento
+  document.addEventListener('DOMContentLoaded', function() {
     var graphs = {{ graphJSON | safe }};
-    Plotly.newPlot('grafico', graphs.data, graphs.layout);
+    
+    // Configurações básicas de layout
+    var layout = {
+      margin: {t: 30, l: 50, r: 30, b: 50},
+      paper_bgcolor: 'rgba(0,0,0,0)',
+      plot_bgcolor: 'rgba(0,0,0,0)',
+      xaxis: {
+        showgrid: true,
+        gridcolor: '#f0f0f0'
+      },
+      yaxis: {
+        showgrid: true,
+        gridcolor: '#f0f0f0'
+      }
+    };
+    
+    // Mescla com as configurações existentes (se houver)
+    if (graphs.layout) {
+      layout = {...graphs.layout, ...layout};
+    }
+    
+    Plotly.newPlot('grafico', graphs.data, layout);
+  });
 </script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
 {% endblock %}

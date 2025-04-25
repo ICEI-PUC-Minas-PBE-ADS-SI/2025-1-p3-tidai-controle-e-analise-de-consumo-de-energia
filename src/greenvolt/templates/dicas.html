@@ -1,9 +1,343 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Dicas
+    Dicas e Notícias sobre Energia
 {% endblock %}
 
 {% block conteudo %}
-<p>Pagina de dicas</p>
+<style>
+    .news-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .news-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+    }
+    
+    .news-title {
+        color: #2c3e50;
+        font-size: 2.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .news-subtitle {
+        color: #7f8c8d;
+        font-size: 1.1rem;
+    }
+    
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    .news-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+    
+    .news-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .news-content {
+        padding: 1.5rem;
+    }
+    
+    .news-date {
+        color: #03941b;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    
+    .news-card-title {
+        color: #2c3e50;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    
+    .news-excerpt {
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+    
+    .read-more {
+        display: inline-block;
+        color: #03941b;
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .read-more:hover {
+        color: #027a16;
+    }
+    
+    .news-category {
+        display: inline-block;
+        background-color: #f0f7f1;
+        color: #03941b;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-button {
+        background: #f0f7f1;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: #03941b;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .filter-button.active {
+        background: #03941b;
+        color: white;
+    }
+    
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #7f8c8d;
+        grid-column: 1 / -1;
+    }
+    
+    .error-message {
+        color: #dc3545;
+        text-align: center;
+        padding: 2rem;
+        grid-column: 1 / -1;
+    }
+    
+    @media (max-width: 768px) {
+        .news-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .news-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+
+<div class="news-container">
+    <div class="news-header">
+        <h1 class="news-title">Dicas e Notícias sobre Energia</h1>
+        <p class="news-subtitle">Fique por dentro das novidades e aprenda a economizar</p>
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-button active" data-filter="all">Todas</button>
+        <button class="filter-button" data-filter="economia">Economia</button>
+        <button class="filter-button" data-filter="solar">Energia Solar</button>
+        <button class="filter-button" data-filter="tarifas">Tarifas</button>
+    </div>
+
+    <div id="news-grid" class="news-grid">
+        <div class="loading">Carregando notícias sobre energia...</div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const apiKey = 'ff9c94015cfa46e8a9cac96ced5ccd82';
+    const query = 'energia elétrica OR consumo de energia OR conta de luz OR eficiência energética OR energia solar OR energia renovável OR tarifa de energia OR bandeira tarifária OR economizar energia OR ANEEL OR geração distribuída OR fatura de energia OR painel solar OR sustentabilidade OR crise energética OR energia eólica OR energia hidrelétrica';
+const apiUrl = `https://newsapi.org/v2/everything?q=${encodeURIComponent(query)}&language=pt&sortBy=publishedAt&pageSize=20&apiKey=${apiKey}`;
+
+
+    const newsGrid = document.getElementById('news-grid');
+    const filterButtons = document.querySelectorAll('.filter-button');
+
+    const energyKeywords = [
+    'energia', 'elétrica', 'luz', 'eletricidade', 'consumo', 'conta', 'tarifa', 'bandeira', 'solar', 'renovável', 
+    'eólica', 'hidrelétrica', 'eletrodoméstico', 'kw/h', 'kwh', 'geração', 'distribuição', 'aneel', 
+    'consumidor', 'residencial', 'fatura', 'eletrônica', 'volt', 'watt', 'megawatt', 'hidroelétrica',
+    'painel', 'fotovoltaico', 'eficiência', 'sustentabilidade', 'eficiência energética', 'consumo consciente',
+    'economia de energia', 'energia limpa', 'geração distribuída', 'smart grid', 'energia térmica', 
+    'biomassa', 'geotérmica', 'consumo de gás', 'sistema de armazenamento de energia', 'eletrificação',
+    'redes inteligentes', 'medição inteligente', 'tecnologias sustentáveis', 'carbono', 'neutralização de carbono',
+    'energia verde', 'smart home', 'carregamento de veículos elétricos', 'soluções de energia renovável'
+];
+
+
+    function isEnergyRelated(article) {
+        if (!article.title || !article.description) return false;
+
+        const content = (article.title + ' ' + article.description).toLowerCase();
+        const source = article.source.name.toLowerCase();
+
+        if (source.includes('esporte') || source.includes('futebol') || source.includes('celebridade')) {
+            return false;
+        }
+
+        return energyKeywords.some(keyword => content.includes(keyword.toLowerCase()));
+    }
+
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('pt-BR', options);
+    }
+
+    async function fetchNews() {
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (data.status === 'ok' && data.articles.length > 0) {
+                const energyNews = data.articles.filter(isEnergyRelated);
+                if (energyNews.length > 0) {
+                    renderNews(energyNews.slice(0, 20));
+                } else {
+                    showError('Nenhuma notícia relevante sobre energia foi encontrada.');
+                }
+            } else {
+                showError('Nenhuma notícia encontrada.');
+            }
+        } catch (error) {
+            console.error('Erro ao buscar notícias:', error);
+            showError('Erro ao carregar notícias.');
+        }
+    }
+
+    function renderNews(articles) {
+        newsGrid.innerHTML = '';
+
+        articles.forEach(article => {
+            const newsCard = document.createElement('div');
+            newsCard.className = 'news-card';
+            newsCard.dataset.category = getArticleCategory(article);
+
+            const imageUrl = article.urlToImage || getDefaultImage(article);
+            const description = formatDescription(article.description || '');
+
+            newsCard.innerHTML = `
+                <img src="${imageUrl}" alt="${article.title}" class="news-image">
+                <div class="news-content">
+                    <span class="news-category">${getCategoryLabel(getArticleCategory(article))}</span>
+                    <span class="news-date">${formatDate(article.publishedAt)}</span>
+                    <h3 class="news-card-title">${article.title}</h3>
+                    <p class="news-excerpt">${description}</p>
+                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="read-more">Leia mais →</a>
+                </div>
+            `;
+
+            newsGrid.appendChild(newsCard);
+        });
+
+        setupFilters();
+    }
+
+    function getArticleCategory(article) {
+        const content = (article.title + ' ' + article.description).toLowerCase();
+
+        if (content.includes('solar') || content.includes('fotovoltaico')) return 'solar';
+        if (content.includes('tarifa') || content.includes('bandeira') || content.includes('aneel')) return 'tarifas';
+        if (content.includes('economi') || content.includes('reduzir') || content.includes('dica') || content.includes('conta')) return 'economia';
+
+        return 'outros';
+    }
+
+    function getCategoryLabel(category) {
+        const labels = {
+            'solar': 'Energia Solar',
+            'tarifas': 'Tarifas',
+            'economia': 'Economia',
+            'outros': 'Energia'
+        };
+        return labels[category] || 'Energia';
+    }
+
+    function getDefaultImage(article) {
+        const category = getArticleCategory(article);
+        const defaultImages = {
+            'solar': 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=600&q=80',
+            'tarifas': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80',
+            'economia': 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80',
+            'outros': 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80'
+        };
+        return defaultImages[category] || defaultImages['outros'];
+    }
+
+    function formatDescription(desc) {
+        let formatted = desc.replace(/\. Fonte:.*/, '').replace(/\. Imagem:.*/, '').replace(/\. Créditos?:.*/, '');
+        return formatted.length > 150 ? formatted.substring(0, 150) + '...' : formatted;
+    }
+
+    function showError(message) {
+        newsGrid.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+
+    function setupFilters() {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                const cards = document.querySelectorAll('.news-card');
+
+                cards.forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+                });
+            });
+        });
+    }
+
+    fetchNews();
+});
+</script>
+<noscript>
+    <style>
+        .loading, .filter-buttons { display: none; }
+    </style>
+    <div class="news-grid">
+        <div class="news-card" data-category="economia">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Economia de energia" class="news-image">
+            <div class="news-content">
+                <span class="news-category">Economia</span>
+                <span class="news-date">${formatDate(new Date())}</span>
+                <h3 class="news-card-title">5 maneiras comprovadas de reduzir sua conta de luz</h3>
+                <p class="news-excerpt">Para ver as notícias mais recentes sobre energia, por favor habilite o JavaScript em seu navegador.</p>
+                <a href="#" class="read-more">Leia mais →</a>
+            </div>
+        </div>
+    </div>
+</noscript>
 {% endblock %}
