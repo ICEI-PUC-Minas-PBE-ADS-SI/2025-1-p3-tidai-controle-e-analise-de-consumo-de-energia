@@ -101,8 +101,9 @@ def page_home():
 
     # Verifica se o form de remover foi enviado e é válido
     if remover_form.validate_on_submit():
-        data_ref = remover_form.data_ref.data
-        conta = Conta.query.filter_by(usuario_id=current_user.id, data_ref=data_ref).first()
+        data_ref = request.form.get('data_ref')
+        if data_ref:
+            conta = Conta.query.filter_by(usuario_id=current_user.id, data_ref=data_ref).first()
         if conta:
             db.session.delete(conta)
             db.session.commit()
