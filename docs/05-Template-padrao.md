@@ -4,7 +4,9 @@
 
 Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
-(images/templatepadrao.jpeg)
+
+![image](https://github.com/user-attachments/assets/8be23635-3223-4095-8a1b-953b752a39e5)
+
 
 > **Links úteis**:
 >
