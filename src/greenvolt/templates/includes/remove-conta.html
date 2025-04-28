@@ -1,29 +1,29 @@
-<div class="modal fade" id="modalRemoverConta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
+<div class="modal fade" id="modalRemoverConta" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remover Conta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% for conta in contas %}
         <form method="POST" action="{{ url_for('page_home') }}">
-          {{ remover_form.hidden_tag() }}
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel">Remover Conta</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-          </div>
-          <div class="modal-body">
-           {% for conta in contas %}
-
-            <ul>
-                <ui>
-                    <p>
-                        Data: {{conta.data_ref}}
-                        Valor: R$ {{conta.valor}}
-                        <button class="btn btn-outline btn-danger" type="submit" name="data_ref" value="{{ conta.data_ref }}">Remover</button>                    
-                      </p> 
-                </ui>
-            </ul>
-
-           {% endfor %}
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="remover_conta" value="true">
+          <input type="hidden" name="data_ref" value="{{ conta.data_ref.isoformat() }}">
+          
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <span class="fw-bold">{{ conta.data_ref.strftime('%B/%Y') }}</span>
+              <span class="ms-2">R$ {{ "%.2f"|format(conta.valor) }}</span>
+            </div>
+            <button type="submit" class="btn btn-danger btn-sm">
+              Remover
+            </button>
           </div>
         </form>
+        {% endfor %}
       </div>
     </div>
   </div>
-
+</div>

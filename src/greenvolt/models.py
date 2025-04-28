@@ -37,7 +37,7 @@ class Dispositivo(db.Model):
 
 class Conta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    data_ref = db.Column(db.Date, nullable=False, unique=True)
+    data_ref = db.Column(db.Date, nullable=False, unique=False)
     valor = db.Column(db.Numeric(10,2), nullable=False)
     consumo_kwh = db.Column(db.Integer, nullable=False)
     usuario_id = db.Column(db.Integer, db.ForeignKey('usuario.id'), nullable=False)
@@ -51,13 +51,23 @@ class Conta(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def remover_conta(usuario, data_ref):
-        conta = Conta.query.filter_by(usuario_id=usuario.id, data_ref=data_ref).first()
-        if conta:
+    @classmethod
+    def remover_conta(cls, usuario, data_ref):
+        conta = cls.query.filter_by(
+            usuario_id=usuario.id,
+            data_ref=data_ref
+        ).first()
+        
+        if not conta:
+            return False
+            
+        try:
             db.session.delete(conta)
             db.session.commit()
             return True
-        return False
+        except:
+            db.session.rollback()
+            raise
 
 
 class Noticia(db.Model):

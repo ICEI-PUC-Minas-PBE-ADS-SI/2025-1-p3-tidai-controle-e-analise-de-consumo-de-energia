@@ -65,7 +65,7 @@ def page_home():
     adicionar_form = AdicionarContaForm()
     remover_form = RemoverContaForm()
 
-    contas = Conta.query.all()
+    contas = Conta.query.filter_by(usuario_id=current_user.id).all()
 
     meses = [conta.data_ref for conta in contas]
     valores = [conta.valor for conta in contas]
@@ -100,15 +100,38 @@ def page_home():
             flash(f"Ocorreu um erro ao adicionar a conta: {str(e)}", category="danger")
 
     # Verifica se o form de remover foi enviado e é válido
-    if remover_form.validate_on_submit():
-        data_ref = request.form.get('data_ref')
-        if data_ref:
-            conta = Conta.query.filter_by(usuario_id=current_user.id, data_ref=data_ref).first()
-        if conta:
-            db.session.delete(conta)
-            db.session.commit()
-            flash("Conta removida com sucesso", category="success")
+    if request.method == 'POST' and 'remover_conta' in request.form:
+        data_ref_str = request.form.get('data_ref')
+        
+        if not data_ref_str:
+            flash("Data de referência não recebida", "danger")
             return redirect(url_for('page_home'))
+
+        try:
+            # Converter string para date
+            data_ref = datetime.strptime(data_ref_str, '%Y-%m-%d').date()
+            
+            # Buscar conta no banco
+            conta = Conta.query.filter_by(
+                usuario_id=current_user.id,
+                data_ref=data_ref
+            ).first()
+
+            if conta:
+                # Remover conta
+                db.session.delete(conta)
+                db.session.commit()
+                flash("Conta removida com sucesso!", "success")
+            else:
+                flash("Conta não encontrada para esta data", "warning")
+                
+        except ValueError as e:
+            flash(f"Formato de data inválido: {str(e)}", "danger")
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Erro ao remover conta: {str(e)}", "danger")
+        
+        return redirect(url_for('page_home'))
 
     return render_template(
         "home.html",

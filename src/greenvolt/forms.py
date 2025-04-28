@@ -42,5 +42,5 @@ class AdicionarContaForm(FlaskForm):
     submit = SubmitField(label="Adicionar Conta")
 
 class RemoverContaForm(FlaskForm):
-    data_ref = HiddenField(validators=[DataRequired()])
-    submit = SubmitField(label="Remover conta")
+    data_ref = HiddenField("Data Referência")
+    submit = SubmitField("Remover Conta")  
