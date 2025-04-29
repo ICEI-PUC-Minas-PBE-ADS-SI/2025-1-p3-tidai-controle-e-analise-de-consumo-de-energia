@@ -1,18 +1,35 @@
 # Arquitetura da solução
 
-<span style="color:red">Pré-requisitos: <a href="04-Projeto-interface.md"> Projeto de interface</a></span>
+O sistema GreenVolt foi projetado para monitorar o consumo de energia elétrica dos usuários, oferecendo uma experiência personalizada, com dicas de economia, controle de dispositivos e registro de contas de luz.
 
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
+Como o sistema funciona:
+Cadastro e acesso de usuários:
+Cada usuário cria uma conta informando nome, e-mail e senha. Com isso, tem acesso ao sistema e pode cadastrar seus dispositivos.
 
-![Arquitetura da Solução](images/arquitetura.png)
+Cadastro de dispositivos:
+O usuário informa quais aparelhos elétricos possui, junto com a potência (em watts) e a média diária de uso. O sistema usa essas informações para estimar o consumo de energia de cada dispositivo.
+
+Monitoramento do consumo:
+Com base nos dados fornecidos, o sistema calcula o consumo diário (em kWh) e armazena esse histórico. Assim, o usuário pode visualizar como cada aparelho impacta na conta de energia.
+
+Controle da conta de luz:
+Mensalmente, o usuário pode registrar o valor da fatura, o total consumido e a data de vencimento. Isso ajuda a comparar o consumo estimado com o consumo real.
+
+Favoritos de notícias:
+O sistema fornece dicas e notícias sobre economia de energia. Caso o usuário ache interessante, pode salvar essas notícias em uma lista de favoritas para consultar depois.
+
+Relacionamento entre os dados:
+
+-Cada usuário pode cadastrar vários dispositivos, contas de luz e notícias favoritas.
+
+-Cada dispositivo tem um histórico de consumo próprio.
+
+Todos os dados são vinculados diretamente ao usuário, garantindo segurança e personalização.
 
 ## Diagrama de classes
 
-O diagrama de classes ilustra graficamente a estrutura do software e como cada uma das classes estará interligada. Essas classes servem de modelo para materializar os objetos que serão executados na memória.
+![Diagrama de Classes](https://github.com/user-attachments/assets/34b925d0-5dec-4f57-ba98-b77390188110)
 
-> **Links úteis**:
-> - [Diagramas de classes - documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.7.0?topic=diagrams-class)
-> - [O que é um diagrama de classe UML?](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
 
 ##  Modelo de dados
 
@@ -31,10 +48,8 @@ O Modelo ER representa, por meio de um diagrama, como as entidades (coisas, obje
 
 ### Esquema relacional
 
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
+![Esquema relacional](https://github.com/user-attachments/assets/7f3e6838-0e09-481f-9875-748f17ac59a6)
 
-![Exemplo de um modelo relacional](images/modelo_relacional.png "Exemplo de modelo relacional.")
 ---
 
 > **Links úteis**:
@@ -47,43 +62,54 @@ Insira aqui o script de criação das tabelas do banco de dados.
 Veja um exemplo:
 
 ```sql
--- Criação da tabela Medico
-CREATE TABLE Medico (
-    MedCodigo INTEGER PRIMARY KEY,
-    MedNome VARCHAR(100)
+-- Tabela de usuários do sistema
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL
 );
 
--- Criação da tabela Paciente
-CREATE TABLE Paciente (
-    PacCodigo INTEGER PRIMARY KEY,
-    PacNome VARCHAR(100)
+-- Tabela de dispositivos registrados pelos usuários
+CREATE TABLE dispositivos (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    potencia_watts FLOAT NOT NULL,
+    horas_uso_diario FLOAT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Consulta
-CREATE TABLE Consulta (
-    ConCodigo INTEGER PRIMARY KEY,
-    MedCodigo INTEGER,
-    PacCodigo INTEGER,
-    Data DATE,
-    FOREIGN KEY (MedCodigo) REFERENCES Medico(MedCodigo),
-    FOREIGN KEY (PacCodigo) REFERENCES Paciente(PacCodigo)
+-- Tabela de registros de consumo dos dispositivos
+CREATE TABLE consumo (
+    id SERIAL PRIMARY KEY,
+    dispositivo_id INT NOT NULL,
+    data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    consumo_kwh FLOAT NOT NULL,
+    FOREIGN KEY (dispositivo_id) REFERENCES dispositivos(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Medicamento
-CREATE TABLE Medicamento (
-    MdcCodigo INTEGER PRIMARY KEY,
-    MdcNome VARCHAR(100)
+-- Tabela de notícias salvas como favoritas pelos usuários
+CREATE TABLE noticias_favoritas (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    titulo VARCHAR(255) NOT NULL,
+    url VARCHAR(255) NOT NULL,
+    data_salva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
--- Criação da tabela Prescricao
-CREATE TABLE Prescricao (
-    ConCodigo INTEGER,
-    MdcCodigo INTEGER,
-    Posologia VARCHAR(200),
-    PRIMARY KEY (ConCodigo, MdcCodigo),
-    FOREIGN KEY (ConCodigo) REFERENCES Consulta(ConCodigo),
-    FOREIGN KEY (MdcCodigo) REFERENCES Medicamento(MdcCodigo)
+-- Tabela de contas de luz cadastradas pelos usuários
+CREATE TABLE conta_de_luz (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    mes_referencia VARCHAR(7) NOT NULL,  -- Exemplo: "03/2025"
+    valor_total DECIMAL(10,2) NOT NULL,
+    consumo_total_kwh FLOAT NOT NULL,
+    data_vencimento DATE NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
 ```
 Esse script deverá ser incluído em um arquivo .sql na pasta [de scripts SQL](../src/db).
 
@@ -98,9 +124,9 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 | **Dimensão**   | **Tecnologia**  |
 | ---            | ---             |
 | Front-end      | HTML + CSS + JS + Bootstrap |
-| Back-end       | Node.js         |
-| SGBD           | Temu           |
-| Deploy         | Vercel          |
+| Back-end       | Python          |
+| SGBD           | Postgres           |
+| Deploy         | Render          |
 
 
 ## Hospedagem
