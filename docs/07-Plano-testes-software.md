@@ -16,10 +16,10 @@
 
 |               **Caso de teste**              |                                                   **CT-002 – Gerar Análise Comparativa**                                                   |
 | :------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------: |
-|              Requisito associado             |                      RF-002 - O sistema deve gerar uma análise do consumo energético com comparações médias regionais.                     |
+|              Requisito associado             |                      RF-002 - O sistema deve gerar uma análise do consumo energético com comparações médias.                     |
 |               Objetivo do teste              |                                Verificar se a análise é exibida corretamente com base nos dados cadastrados.                               |
-|                    Passos                    | - Acessar o navegador <br> - Realizar login <br> - Acessar a seção “Análise de Consumo” <br> - Visualizar gráficos e comparações regionais |
-|               Critério de êxito              |                                    - Os dados são exibidos corretamente com média comparativa regional.                                    |
+|                    Passos                    | - Acessar o navegador <br> - Realizar login <br> - Acessar a seção “Análise de Consumo” <br> - Visualizar gráficos e comparações |
+|               Critério de êxito              |                                    - Os dados são exibidos corretamente com média comparativa.                                    |
 | Responsável pela elaboração do caso de teste |                                                                    Luis, Matheus                                                                   |
 
 
