@@ -9,7 +9,7 @@ Para cada caso de teste definido no <a href="07-Plano-testes-software.md"> Plano
 | **Caso de teste** 	| **CT-001 – Cadastrar Consumo de Energia** 	|
 |:---:	|:---:	|
 | Requisito associado | O sistema deve permitir que usuários cadastrem seu consumo de energia. |
-| Registro de evidência | [www.teste.com.br/drive/ct-01](http://www.teste.com.br/drive/ct-01) |
+| Registro de evidência | (images/teste01.png) (images/teste01.1.png)|
 
 | **Caso de teste** 	| **CT-002 – Gerar Análise Comparativa** 	|
 |:---:	|:---:	|
@@ -19,17 +19,17 @@ Para cada caso de teste definido no <a href="07-Plano-testes-software.md"> Plano
 | **Caso de teste** 	| **CT-003 – Exibir Notícias Personalizadas** 	|
 |:---:	|:---:	|
 | Requisito associado | RF-003 - Deve exibir notícias personalizadas para redução do consumo com base nos dados inseridos pelo usuário. |
-| Registro de evidência | [www.teste.com.br/drive/ct-01](http://www.teste.com.br/drive/ct-01) |
+| Registro de evidência | (images/teste2.png) |
 
 | **Caso de teste** 	| **CT-004 – Visualizar Gráficos Interativos** 	|
 |:---:	|:---:	|
 | Requisito associado | RF-004 - O usuário poderá acessar gráficos interativos mostrando a evolução do consumo de energia ao longo do tempo. |
-| Registro de evidência | [www.teste.com.br/drive/ct-01](http://www.teste.com.br/drive/ct-01) |
+| Registro de evidência | (images/teste3.png) |
 
 | **Caso de teste** 	| **CT-005 – Estimar Consumo ** 	|
 |:---:	|:---:	|
 | Requisito associado | RF-006 - O site deve contar com uma funciolidade interativa para estimar o consumo de aparelhos elétricos do usuário. |
-| Registro de evidência | [www.teste.com.br/drive/ct-01](http://www.teste.com.br/drive/ct-01) |
+| Registro de evidência | (images/teste4.png) |
 
 > **Links úteis**:
 > - [Screencast: entenda o que é e como gravar vídeos com ele](https://rockcontent.com/br/blog/screencast/) 
