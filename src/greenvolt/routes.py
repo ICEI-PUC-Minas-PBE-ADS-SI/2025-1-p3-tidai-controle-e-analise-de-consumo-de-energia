@@ -87,8 +87,8 @@ def page_home():
         try:
             nova_conta = Conta(
                 data_ref=adicionar_form.data.data,
-                valor=adicionar_form.valor.data,
-                consumo_kwh=adicionar_form.consumo_kwh.data,
+                valor=float(adicionar_form.valor.data),  # já corrigido
+                consumo_kwh=int(adicionar_form.consumo_kwh.data),  # <-- Adicione isso
                 usuario_id=current_user.id
             )
             db.session.add(nova_conta)

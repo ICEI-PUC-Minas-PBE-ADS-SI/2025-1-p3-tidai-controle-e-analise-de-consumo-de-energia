@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalAdicionarConta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form method="POST" action="{{ url_for('page_home') }}">
+        <form method="POST" action="{{ url_for('page_home') }}" onsubmit="limparValor() ">
           {{ adicionar_form.hidden_tag() }}
           <div class="modal-header">
             <h5 class="modal-title" id="modalLabel">Adicionar Nova Conta</h5>
@@ -31,22 +31,24 @@
   </div>
 
   <script>
-    function formatarValor(input) {
-      let value = input.value.replace(/[^\d]/g, ''); 
-
-      if (value.length > 2) {
-        value = value.replace(/(\d{2})$/, ',$1');
-      }
-  
-      if (valor.length > 5) {
-        value = value.replace(/(\d)(\d{3})$/, '$1,$2'); 
-      } 
-
-      value = value.replace(',', '.');
-
-      value = 'R$ ' + value;
-      input.value = value;
+    function limparValor() {
+    const valorInput = document.querySelector('input[name="valor"]');
+    if (valorInput) {
+      // Remove R$, espaços e vírgula, troca vírgula por ponto
+      valorInput.value = valorInput.value.replace(/[^\d,\.]/g, '').replace(',', '.');
     }
+  }
+
+  
+  function formatarValor(input) {
+    let value = input.value.replace(/[^\d]/g, '');
+
+    if (value.length > 2) {
+      value = value.replace(/(\d{2})$/, ',$1');
+    }
+
+    input.value = 'R$ ' + value;
+  }
 
     function formatKWh(input) {
 
