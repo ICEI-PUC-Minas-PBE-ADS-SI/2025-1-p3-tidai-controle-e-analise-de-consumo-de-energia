@@ -12,6 +12,8 @@ login_manager = LoginManager()
 app.config['SECRET_KEY'] = 'a5881f26bae925d752a97795'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///greenvolt.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  
+
+
 db.init_app(app)
 bcrypt = Bcrypt(app)
 login_manager.init_app(app)
