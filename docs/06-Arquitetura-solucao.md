@@ -111,7 +111,7 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 | ---            | ---             |
 | Front-end      | HTML + CSS + JS + Bootstrap |
 | Back-end       | Python          |
-| SGBD           | Postgres           |
+| SGBD           | SQLite           |
 | Deploy         | Render          |
 
 
