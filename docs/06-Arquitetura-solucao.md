@@ -117,23 +117,111 @@ Apresente também uma figura explicando como as tecnologias estão relacionadas 
 
 ## Hospedagem
 
-Explique como a hospedagem e o lançamento da plataforma foram realizados.
+A hospedagem e o lançamento da plataforma GreenVolt foram realizados utilizando a plataforma Render, que oferece serviços gratuitos e pagos para aplicações web em Node.js, Python, static sites, entre outros.
 
-> **Links úteis**:
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando seu site no Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+🔧 Processo de Hospedagem:
+Preparação do projeto:
+
+O código da aplicação foi armazenado em um repositório no GitHub.
+
+Garantimos que o projeto estivesse configurado com scripts de inicialização (start) no package.json, facilitando o deploy automático.
+
+Integração com o GitHub:
+
+Conectamos o repositório do GitHub à conta da Render.
+
+A cada novo push na branch principal, a plataforma realiza automaticamente o build e o deploy da aplicação.
+
+Configuração do ambiente:
+
+Escolhemos a opção de Web Service no Render.
+
+Definimos a porta padrão e as variáveis de ambiente (caso necessário).
+
+A aplicação foi exposta por um domínio padrão .onrender.com.
+
+Resultado final:
+
+O sistema ficou disponível online para testes e uso em tempo real.
+
+A URL gerada permite que usuários testem funcionalidades como cadastro de dispositivos, visualização de consumo e leitura de notícias.
+
 
 ## Qualidade de software
 
-Conceituar qualidade é uma tarefa complexa, mas ela pode ser vista como um método gerencial que, por meio de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+📋 Características e Subcaracterísticas Selecionadas (ISO/IEC 25010)
+Com base na norma ISO/IEC 25010, selecionamos as seguintes subcaracterísticas como foco principal do projeto GreenVolt:
 
-No contexto do desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem atendidas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, esse nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+1. Usabilidade
+Subcaracterísticas:
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software. Com base nessas características e nas respectivas subcaracterísticas, identifique as subcaracterísticas que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software, considerando alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão à equipe avaliar os objetos de interesse.
+Apreensibilidade: O usuário entende rapidamente como utilizar o sistema.
 
-> **Links úteis**:
-> - [ISO/IEC 25010:2011 - Systems and Software Engineering — Systems and Software Quality Requirements and Evaluation (SQuaRE) — System and Software Quality Models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de software - Engenharia de Software](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209)
+Operacionalidade: O sistema é fácil de operar e interagir.
+
+Justificativa: Como o sistema é voltado a usuários comuns, muitos sem conhecimentos técnicos, a interface precisa ser clara, simples e intuitiva.
+
+Métricas:
+
+Tempo médio para completar tarefas básicas (ex: cadastrar dispositivo).
+
+Percentual de erros cometidos durante testes de usabilidade.
+
+Satisfação medida por questionário pós-uso (ex: escala Likert).
+
+2. Desempenho e Eficiência
+Subcaracterística:
+
+Tempo de resposta: Velocidade com que o sistema responde às interações.
+
+Justificativa: A experiência do usuário depende da fluidez ao interagir com o site — páginas e cálculos precisam carregar rapidamente.
+
+Métricas:
+
+Tempo médio de carregamento das páginas (< 2 segundos).
+
+Testes com Lighthouse (Google) e WebPageTest.
+
+3. Segurança
+Subcaracterísticas:
+
+Confidencialidade: Proteção de dados pessoais (nome, e-mail, senha).
+
+Autenticidade: Verificação segura do acesso do usuário.
+
+Justificativa: O sistema armazena informações sensíveis, sendo essencial garantir que os dados estejam protegidos e que somente usuários autorizados acessem suas contas.
+
+Métricas:
+
+Uso de hash de senha (ex: SHA-256).
+
+Testes de login e logout, além de verificação de falhas de segurança básicas.
+
+4. Portabilidade
+Subcaracterística:
+
+Adaptabilidade: O sistema se adapta bem a diferentes dispositivos e tamanhos de tela.
+
+Justificativa: Muitos usuários acessam via smartphones, então é essencial que o sistema funcione bem em mobile.
+
+Métricas:
+
+Testes em diferentes navegadores e resoluções.
+
+Avaliação via Google Mobile-Friendly Test.
+
+5. Manutenibilidade
+Subcaracterística:
+
+Modificabilidade: Facilidade para realizar alterações ou correções no código.
+
+Justificativa: O projeto pode evoluir no futuro com novas funcionalidades ou ajustes. Um código limpo e modular ajuda muito nesse processo.
+
+Métricas:
+
+Organização e clareza do repositório (ex: estrutura de pastas, nome de arquivos).
+
+Análise de complexidade ciclomática (ex: com SonarQube ou VS Code extensions).
+
+📌 Conclusão
+A qualidade do sistema GreenVolt foi planejada desde o início com base em critérios reais de usabilidade, segurança e desempenho. A equipe utilizou a norma ISO/IEC 25010 como guia para priorizar subcaracterísticas compatíveis com os objetivos do projeto e com o perfil dos usuários.
