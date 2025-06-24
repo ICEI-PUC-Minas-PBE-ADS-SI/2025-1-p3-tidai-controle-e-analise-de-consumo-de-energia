@@ -1,66 +1,56 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    Sobre
+    Funcionalidades
 {% endblock %}
 
 {% block conteudo %}
 <div class="container mt-5">
-    <h1 class="mb-4">Sobre o GreenVolt</h1>
+    <h1 class="mb-4">Funcionalidades do GreenVolt</h1>
+    <p class="mb-4">Conheça as principais ferramentas da nossa plataforma e descubra como o GreenVolt pode transformar a forma como você lida com sua energia elétrica.</p>
 
-    <p>
-        O GreenVolt nasceu da vontade de transformar o jeito como pessoas e empresas lidam com o consumo de energia elétrica. Em um cenário onde os custos energéticos estão cada vez mais altos e a sustentabilidade se torna uma prioridade global, nossa plataforma surge como uma solução prática, acessível e inovadora para monitorar, analisar e otimizar o uso da energia.
-    </p>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4> Simulador de Gastos Energéticos</h4>
+                <p>Simule seu consumo de energia com base em diferentes hábitos e equipamentos. Veja como pequenas mudanças podem gerar grande economia.</p>
+            </div>
+        </div>
 
-    <h2 class="mt-4">Nossa Missão</h2>
-    <p>
-        Nossa missão é capacitar usuários residenciais e empresariais com informações claras, ferramentas inteligentes e recomendações personalizadas para promover um consumo consciente, econômico e sustentável. Acreditamos que a educação e a tecnologia caminham juntas para construir um futuro onde a energia seja usada com responsabilidade e eficiência.
-    </p>
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4> Registro de Contas de Luz</h4>
+                <p>Adicione mensalmente os valores da sua fatura e acompanhe sua evolução. Descubra tendências de aumento ou redução no consumo.</p>
+            </div>
+        </div>
 
-    <h2 class="mt-4">Nossa Visão</h2>
-    <p>
-        Ser referência nacional em plataformas de gestão energética, reconhecida pela inovação, facilidade de uso e impacto positivo no meio ambiente e na economia dos nossos usuários. Queremos inspirar uma mudança de comportamento que ultrapasse as barreiras técnicas e financeiras, tornando o consumo consciente algo acessível a todos.
-    </p>
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4> Relatórios e Gráficos Interativos</h4>
+                <p>Visualize dados em tempo real com gráficos interativos, facilitando a análise de consumo por período e por categoria.</p>
+            </div>
+        </div>
 
-    <h2 class="mt-4">Nossos Valores</h2>
-    <ul>
-        <li><strong>Sustentabilidade:</strong> Atuamos para reduzir o impacto ambiental através do uso eficiente de recursos energéticos.</li>
-        <li><strong>Transparência:</strong> Informações claras e acessíveis para que todos possam entender e controlar seu consumo.</li>
-        <li><strong>Inovação:</strong> Buscamos constantemente soluções tecnológicas que facilitem a vida do usuário.</li>
-        <li><strong>Educação:</strong> Valorizamos o conhecimento como ferramenta fundamental para a mudança de hábitos.</li>
-        <li><strong>Compromisso Social:</strong> Trabalhamos para democratizar o acesso a ferramentas de gestão energética, beneficiando tanto residências quanto pequenos e médios negócios.</li>
-    </ul>
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4> Notícias sobre Economia de Energia</h4>
+                <p>Fique por dentro de novidades, incentivos governamentais e dicas práticas para reduzir sua conta e contribuir com o planeta.</p>
+            </div>
+        </div>
 
-    <h2 class="mt-4">O Que Fazemos</h2>
-    <ul>
-        <li><strong>Monitoramento Inteligente:</strong> Nossa plataforma oferece dashboards intuitivos que exibem dados de consumo em tempo real e históricos, facilitando o acompanhamento detalhado.</li>
-        <li><strong>Análise e Relatórios Personalizados:</strong> Geramos relatórios detalhados que identificam padrões de consumo, aparelhos que mais consomem energia e oportunidades para redução de custos.</li>
-        <li><strong>Recomendações Práticas:</strong> Fornecemos dicas e sugestões baseadas no perfil de consumo do usuário, ajudando a implementar mudanças eficazes.</li>
-        <li><strong>Conteúdo Educativo:</strong> Produzimos artigos, vídeos e materiais informativos sobre eficiência energética, novidades do setor e políticas públicas relacionadas.</li>
-        <li><strong>Simuladores Interativos:</strong> Ferramentas que permitem ao usuário estimar o consumo e custo de diferentes cenários, promovendo uma tomada de decisão mais consciente.</li>
-    </ul>
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4>⚙️ Personalização de Perfil</h4>
+                <p>Configure sua conta para receber alertas, recomendações personalizadas e ajustes baseados no seu padrão de consumo.</p>
+            </div>
+        </div>
 
-    <h2 class="mt-4">Tecnologia por trás do GreenVolt</h2>
-    <p>
-        Desenvolvemos nossa plataforma utilizando tecnologias open-source modernas que garantem escalabilidade, segurança e performance. Nosso backend é robusto para processar grandes volumes de dados, enquanto o frontend oferece uma experiência amigável, responsiva e acessível em diversos dispositivos.
-    </p>
-    <p>
-        Também investimos em integrações com APIs de concessionárias de energia, permitindo importação automática de faturas e atualização em tempo real, facilitando o uso sem burocracia para o usuário.
-    </p>
-
-    <h2 class="mt-4">Nossa Equipe</h2>
-    <p>
-        O GreenVolt é fruto do trabalho de uma equipe multidisciplinar formada por estudantes e profissionais da área de Análise e Desenvolvimento de Sistemas, design, sustentabilidade e gestão energética. Unidos pelo propósito de criar soluções tecnológicas que impactem positivamente o planeta e a vida das pessoas.
-    </p>
-
-    <h2 class="mt-4">Parcerias e Impacto Social</h2>
-    <p>
-        Buscamos parcerias com organizações ambientais, instituições acadêmicas e empresas do setor energético para ampliar o alcance e a eficácia das nossas soluções. Nosso compromisso vai além da tecnologia: queremos contribuir para uma sociedade mais consciente e responsável no uso da energia.
-    </p>
-
-    <h2 class="mt-4">Fale Conosco</h2>
-    <p>
-        Sua opinião é muito importante para nós! Se você tem dúvidas, sugestões ou deseja colaborar com o projeto, entre em contato pelo e-mail: <a href="mailto:contato@greenvolt.com">contato@greenvolt.com</a>. Estamos sempre abertos a ouvir e crescer junto com nossa comunidade.
-    </p>
+        <div class="col-md-6">
+            <div class="p-4 bg-light rounded shadow-sm h-100">
+                <h4> Acesso Seguro e Multiplataforma</h4>
+                <p>Acesse o GreenVolt de onde estiver, com total segurança dos seus dados, seja pelo computador, tablet ou celular.</p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
